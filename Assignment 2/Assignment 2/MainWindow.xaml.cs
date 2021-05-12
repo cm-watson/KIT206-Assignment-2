@@ -24,5 +24,10 @@ namespace Assignment_2
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            String nice = "nice";
+        }
     }
 }
