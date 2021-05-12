@@ -13,12 +13,12 @@ namespace Assignment_2
 
         public string Title()
         {
-            return "Title";
+            return;
         }
 
         public string ToTitle(EmploymentLevel l)
         {
-            return "" + l;
+            return;
         }
     }
 }
