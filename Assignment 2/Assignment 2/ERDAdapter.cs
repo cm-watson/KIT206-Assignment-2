@@ -47,6 +47,47 @@ namespace Assignment_2
         }
 
         //For step 2.2 in Week 8 tutorial
+        public static List<Researcher> FetchFullResearcherDetails()
+        {
+            List<Researcher> researchers = new List<Researcher>();
+
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    //Note that in your assignment you will need to inspect the *type* of the
+                    //employee/researcher before deciding which kind of concrete class to create.
+                    staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
+                }
+            }
+            catch (MySqlException e)
+            {
+                ReportError("loading staff", e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return staff;
+        }
+
+        //For step 2.2 in Week 8 tutorial
         public static List<Employee> LoadAll()
         {
             List<Employee> staff = new List<Employee>();
