@@ -31,6 +31,8 @@ namespace Assignment_2
         public string Email { get; set; }
         // A link to a photo of the Researcher
         public URL Photo { get; set; }
+        // A string containing the type of researcher. Either 'Staff' or 'Student'
+        public String Type { get; set; }
 
         // A list of the Researcher's Publications
         public List<Publication> Publications;
