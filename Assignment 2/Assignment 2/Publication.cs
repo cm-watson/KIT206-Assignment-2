@@ -11,7 +11,7 @@ namespace Assignment_2
     {
         public string DOI { get; set; }
         public string Title { get; set; }
-        public List<Author> Authors { get; set; }
+        public List<string> Authors { get; set; }
         public int Year { get; set; }
         public Type OutputType { get; set; }
         public string Cite { get; set; }

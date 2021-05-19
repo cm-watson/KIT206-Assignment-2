@@ -6,72 +6,54 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
+    // The campus at which the Researcher attends
     public enum Campus { Hobart, Launceston, CradleCoast };
+    // The Researcher's job title
     public enum JobTitle { PostDoc, Lecturer, SeniorLecturer, AssociateProf, Prof };
 
     public class Researcher
     {
+        // The Researcher's private ID
         private int ID { get; set; }
+        // The Researcher's first name
         public string GivenName { get; set; }
+        // The Researcher's last name
         public string FamilyName { get; set; }
+        // The Researcher's job title
         public string Title { get; set; }
+        // The Researcher's school they work at
         public string School { get; set; }
+        // The campus at which the Researcher works at
         public Campus Campus { get; set; }
+        // The Researcher's email address
         public string Email { get; set; }
-        public string Photo { get; set; }
+        // A link to a photo of the Researcher
+        public URL Photo { get; set; }
 
+        // A list of the Researcher's Publications
         public List<Publication> Publications;
+        // The Researcher's Position
         public Position Position { get; set; }
 
+        // Return the current Position of the Researcher
         public Position GetCurrentJob => Position;
 
+        // Return the current job title of the Researcher
         public string CurrentJobTitle => Position.Title();
-        /*
-        public string CurrentJobTitle
-        {
-            get { return "" + FamilyName + ", " + GivenName + " (" + Title + ")"; }
-        }
-        */
 
-        //The SkillCount out of 10, expressed as a percentage
-        public double SkillPercent
-        {
-            //This is equivalent to SkillCount / 10.0 * 100
-            get { return SkillCount * 10.0; }
-        }
+        // Return the start date of the Researcher's current job
+        public Date CurrentJobStart() => Position.Start;
 
-        //This is likely the solution you will have devised
-        public DateTime MostRecentTraining
-        {
-            get
-            {
-                var skillDates = from TrainingSession s in Skills
-                                 orderby s.Certified descending
-                                 select s.Certified;
-                return skillDates.First();
-            }
-        }
+        // Return the earliest job of the Researcher
+        public Position GetEarliestJob() => Position.EarliestJob;
 
-        //This is a more robust implementation, but requires the the return type be made 'nullable'
-        //        public DateTime? MostRecentTraining
-        //        {
-        //            get
-        //            {
-        //                if (SkillCount > 0)
-        //                {
-        //                    var skillDates = from TrainingSession s in Skills
-        //                                     orderby s.Certified descending
-        //                                     select s.Certified;
-        //                    return skillDates.First();
-        //                }
-        //                return null;
-        //            }
-        //        }
+        // Return the start date of the Researcher's earliest job
+        public Date EarliestStart() => Position.EarliestStart;
 
-        public override string ToString()
-        {
-            //For the purposes of this week's demonstration this returns only the name
-            return Name;
-        }
+        // Return the Researcher's tenure
+        public float Tenure() => Position.Tenure;
+
+        // Return the publication count of the Researcher
+        public int PublicationsCount() => Position.PublicationsCount;
     }
 }

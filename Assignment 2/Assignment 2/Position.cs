@@ -7,9 +7,9 @@ namespace Assignment_2
     public enum EmploymentLevel { Student, A, B, C, D, E };
     public class Position
     {
-        public EmploymentLevel level { get; set; }
-        public Date start { get; set; }
-        public Date end { get; set; }
+        public EmploymentLevel Level { get; set; }
+        public Date Start { get; set; }
+        public Date End { get; set; }
 
         public string Title()
         {
