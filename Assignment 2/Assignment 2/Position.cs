@@ -8,17 +8,19 @@ namespace Assignment_2
     public class Position
     {
         public EmploymentLevel Level { get; set; }
-        public Date Start { get; set; }
-        public Date End { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
 
+        // Return the JobTitle (Postdoc,Lecturer,Prof) of the Position
         public string Title()
         {
-            return;
+                        
         }
 
+        // Return the EmploymentLevel (A,B,C...) of the Position
         public string ToTitle(EmploymentLevel l)
-        {
-            return;
+        { 
+
         }
     }
 }
