@@ -58,7 +58,7 @@ namespace Assignment_2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -66,7 +66,10 @@ namespace Assignment_2
                     //Note that in your assignment you will need to inspect the *type* of the
                     //employee/researcher before deciding which kind of concrete class to create.
                     staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
+                    //rdr.getName
                 }
+
+               
             }
             catch (MySqlException e)
             {
