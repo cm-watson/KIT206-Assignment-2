@@ -45,15 +45,30 @@ namespace Assignment_2
         public Date CurrentJobStart() => Position.Start;
 
         // Return the earliest job of the Researcher
-        public Position GetEarliestJob() => Position.EarliestJob;
+        public Position GetEarliestJob()
+        {
+            // Find the job with the earliest start in database
+            // Return corresponding job
+        }
 
         // Return the start date of the Researcher's earliest job
-        public Date EarliestStart() => Position.EarliestStart;
+        public Date EarliestStart()
+        {
+            // Find the earliest start in database
+        }
 
         // Return the Researcher's tenure
-        public float Tenure() => Position.Tenure;
+        public float Tenure() {
+            // Tenure is the time (in fractional years) since the Researcher commenced work
+            
+        }
 
         // Return the publication count of the Researcher
-        public int PublicationsCount() => Position.PublicationsCount;
+        public int PublicationsCount()
+        {
+            // The number of publications is the length of the Publiations array
+            int PublicationCount = Publications.Count;
+            return PublicationCount;
+        }
     }
 }
