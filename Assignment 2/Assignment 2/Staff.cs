@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class Staff
+    public class Staff
     {
-        public float ThreeYearAverage()
+        // The total number of publications in the last three years / 3
+        public float ThreeYearAverage(List<Publication> Publications)
         {
-            return;
+            return Publications.Count / 3;
         }
-        public float Performance()
+        // The Researcher's ThreeYearAverage / expected number of Publications based on their EmploymentLevel
+        public float Performance(List<Publication> Publications)
         {
-            return;
+            float ThreeYearAverage = ThreeYearAverage(Publications);
         }
     }
 }
