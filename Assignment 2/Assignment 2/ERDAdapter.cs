@@ -66,7 +66,7 @@ namespace Assignment_2
                     //Note that in your assignment you will need to inspect the *type* of the
                     //employee/researcher before deciding which kind of concrete class to create.
                     staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
-                    //rdr.getName
+                    //rdr.getName .getValue  .getString
                 }
 
                
