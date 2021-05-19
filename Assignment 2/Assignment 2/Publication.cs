@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class Publications
+    class Publication
     {
         string doi;
         string title;
-        List<authors> authors;
+        List<Author> authors;
         int year;
-        type type;
+        Type type;
         string cite;
         int date_available;
         int age;
@@ -24,7 +24,7 @@ namespace Assignment_2
 
 
 
-        public Publications(string doi, string title, int year, string cite, int date_available, int age)
+        public Publication(string doi, string title, int year, string cite, int date_available, int age)
         {
             this.doi = doi;
             this.title = title;
@@ -37,7 +37,7 @@ namespace Assignment_2
         static void Main(string[] args)
         {
 
-            Publications publication = new Publications("idk", "title", 2021, "idk", 21, 21);
+            Publication publication = new Publication("idk", "title", 2021, "idk", 21, 21);
 
             Console.WriteLine(publication);
 

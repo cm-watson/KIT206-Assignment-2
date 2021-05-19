@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class Authors
+    class Author
     {
         string name;
     }
