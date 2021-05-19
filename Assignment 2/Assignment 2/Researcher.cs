@@ -11,27 +11,27 @@ namespace Assignment_2
 
     public class Researcher
     {
-        public string givenName { get; set; }
-        public string familyName { get; set; }
-        public string title { get; set; }
-        public string school { get; set; }
-        public Campus campus { get; set; }
-        public string email { get; set; }
-        public string photo { get; set; }
-        public currentJobTitle JobTitle { get; set; }
+        private int ID { get; set; }
+        public string GivenName { get; set; }
+        public string FamilyName { get; set; }
+        public string Title { get; set; }
+        public string School { get; set; }
+        public Campus Campus { get; set; }
+        public string Email { get; set; }
+        public string Photo { get; set; }
 
-        public List<Publication> publications;
-        public Position position;
+        public List<Publication> Publications;
+        public Position Position { get; set; }
 
-        public string getJobTitle
+        public Position GetCurrentJob => Position;
+
+        public string CurrentJobTitle => Position.Title();
+        /*
+        public string CurrentJobTitle
         {
-            get
+            get { return "" + FamilyName + ", " + GivenName + " (" + Title + ")"; }
         }
-
-        public string currentJobTitle
-        {
-            get { return "" + familyName + ", " + givenName + " (" + title + ")"; }
-        }
+        */
 
         //The SkillCount out of 10, expressed as a percentage
         public double SkillPercent

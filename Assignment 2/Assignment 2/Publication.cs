@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class Publication
+    public enum OutputType { Conference, Journal, Other };
+    public class Publication
     {
         public string DOI { get; set; }
         public string Title { get; set; }
@@ -43,12 +44,12 @@ namespace Assignment_2
 
         }
 
-        static string formatYear(int year, string title)
+        static string FormatYear(int year, string title)
         {
 
         }
 
-        static string sortAlphabetically(string title)
+        static string SortAlphabetically(string title)
         {
 
         }
