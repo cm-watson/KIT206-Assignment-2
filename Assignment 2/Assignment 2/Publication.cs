@@ -29,14 +29,14 @@ namespace Assignment_2
         public int Age { get; set; }
 
         // Publication Constructor
-        public Publication(string doi, string title, int year, string cite, int date_available, int age)
+        public Publication(string DOI, string Title, int Year, string Cite, int DateAvailable, int Age)
         {
-            this.DOI = doi;
-            this.Title = title;
-            this.Year = year;
-            this.Cite = cite;
-            this.DateAvailable = date_available;
-            this.Age = age;
+            this.DOI = DOI;
+            this.Title = Title;
+            this.Year = Year;
+            this.Cite = Cite;
+            this.DateAvailable = DateAvailable;
+            this.Age = Age;
         }
 
         /* For testing

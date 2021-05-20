@@ -9,6 +9,11 @@ namespace Assignment_2
     class Author
     {
         // The name of the Author
-        string name;
+        string Name;
+
+        public Author(string Name)
+        {
+            this.Name = Name;
+        }
     }
 }

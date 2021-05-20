@@ -9,6 +9,12 @@ namespace Assignment_2
     class Student:Researcher
     {
         // The name of the Student's degree
-        public string Degree;
+        public string Degree { get; set; }
+
+        // Student Constructor
+        public Student(string Degree)
+        {
+            this.Degree = Degree;
+        }
     }
 }

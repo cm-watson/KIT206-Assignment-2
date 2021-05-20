@@ -14,6 +14,14 @@ namespace Assignment_2
         // The end date of the Researcher's Position
         public DateTime End { get; set; }
 
+        // Position Constructor
+        public Position(EmployementLevel Level, DateTime Start, DateTime End) 
+        {
+            this.Level = Level;
+            this.Start = Start;
+            this.End = End;
+        }
+
         // Return the JobTitle (Postdoc,Lecturer,Prof) of the Position
         public string Title()
         {

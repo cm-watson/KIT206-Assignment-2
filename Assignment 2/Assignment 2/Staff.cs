@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    public class Staff
+    public class Staff:Researcher
     {
         // The total number of publications in the last three years / 3
         public float ThreeYearAverage(List<Publication> Publications)
