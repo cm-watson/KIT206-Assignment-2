@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// A comment
-
 namespace Assignment_2
 {
     // The campus at which the Researcher attends
@@ -70,10 +68,10 @@ namespace Assignment_2
         }
 
         // Return the current job title of the Researcher
-        public string CurrentJobTitle => GetCurrentJob.Title();
+        public string CurrentJobTitle => GetCurrentJob().Title();
 
         // Return the start date of the Researcher's current job
-        public Date CurrentJobStart() => GetCurrentJob.Start;
+        public DateTime CurrentJobStart => GetCurrentJob().Start;
 
         // Return the earliest job of the Researcher
         public Position GetEarliestJob()
@@ -85,7 +83,7 @@ namespace Assignment_2
                 Position Temp = Positions.Get(i); // temporary Position
                 
                 // If the temporary Position has an earlier starting date
-                if(Temp.Start < EarliestJob.Start)
+                if(DateTime.LessThan(Temp.Start, EarliestJob.Start))
                 {
                     // Replace the earliest job with the temporary Position
                     EarliestJob = Temp;
@@ -97,15 +95,21 @@ namespace Assignment_2
         }
 
         // Return the start date of the Researcher's earliest job
-        public Date EarliestStart()
-        {
-            // Find the earliest start in database
-        }
+        public DateTime EarliestStart => GetEarliestJob().Start;
 
         // Return the Researcher's tenure
+        // Tenure is the time (in fractional years) since the Researcher commenced work
         public float Tenure() {
-            // Tenure is the time (in fractional years) since the Researcher commenced work
-            
+            // The date the Researchers commenced work
+            DateTime EarliestStart = GetEarliestStart();
+            // The current date and time
+            DateTime CurrentDate = DateTime.Now();
+
+            // The time in days, hours, and minutes since the Researcher commenced work
+            TimeSpan Difference = CurrentDate.Subtract(EarliestStart);
+
+            // Return the time (in fractional years) since the Researcher commenced work
+            return Difference.Days / 365.0;
         }
 
         // Return the publication count of the Researcher
