@@ -46,6 +46,14 @@ namespace Assignment_2
             return conn;
         }
 
+
+		researcherID = researcher.getID();
+
+
+		// Researcher basic details
+		// fname, lname, title, level, type, NTH: photo
+
+
         //For step 2.2 in Week 8 tutorial
         public static List<Researcher> FetchFullResearcherDetails()
         {
@@ -58,13 +66,33 @@ namespace Assignment_2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, 
+                	title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, 
+                	current_start from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
                     //Note that in your assignment you will need to inspect the *type* of the
                     //employee/researcher before deciding which kind of concrete class to create.
+                    
+                    int ID = rdr.GetInt32(0);
+                    String givenName = rdr.GetString(1);
+                    String familyName = rdr.GetString(2);
+                    String title = rdr.GetString(3);		// Needs operation
+                    String unit = rdr.GetString(4);
+                    String campus = rdr.GetString(5);		// " "
+                    String email = rdr.GetString(6);
+                    String familyName = rdr.GetString(7);
+                    String photo = rdr.GetString(8);
+                    String degree = rdr.GetString(9);		// " "
+                    int supervisorID = rdr.GetString(2);
+                    String level = rdr.GetString(10);
+                    String degree = rdr.GetString(9);
+                    
+                    
+                    
+                    
                     staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
                     //rdr.getName .getValue  .getString
                 }
