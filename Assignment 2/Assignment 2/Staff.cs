@@ -17,6 +17,7 @@ namespace Assignment_2
         public float Performance(List<Publication> Publications)
         {
             float ThreeYearAverage = ThreeYearAverage(Publications);
+            // ..... //
         }
     }
 }
