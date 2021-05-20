@@ -24,7 +24,7 @@ namespace Assignment_2
         // The Researcher's school they work at
         public string School { get; set; }
         // The campus at which the Researcher works at
-        public string Campus { get; set; }
+        public Campus Campus { get; set; }
         // The Researcher's email address
         public string Email { get; set; }
         // A link to a photo of the Researcher
@@ -37,7 +37,7 @@ namespace Assignment_2
         public Position Position { get; set; }
 
         // Researcher Constructor
-        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, string Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
+        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
         {
             this.ID = ID;
             this.GivenName = GivenName;

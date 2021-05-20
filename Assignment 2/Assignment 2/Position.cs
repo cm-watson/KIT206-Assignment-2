@@ -5,6 +5,7 @@ using System.Text;
 namespace Assignment_2
 {
     public enum EmploymentLevel { Student, A, B, C, D, E };
+
     public class Position
     {
         // The Researcher's Position's EmploymentLevel
@@ -22,16 +23,36 @@ namespace Assignment_2
             this.End = End;
         }
 
-        // Return the JobTitle (Postdoc,Lecturer,Prof) of the Position
+        // Return the JobTitle (Postdoc, Lecturer, Prof, etc) of the Position
         public string Title()
         { 
-           return ToTitle(Level);
+            switch(Level)
+            {
+                case A:
+                    return "Postdoc";
+                    break;
+                case B:
+                    return "Lecturer";
+                    break;
+                case C:
+                    return "Senior Lecturer";
+                    break;
+                case D:
+                    return "Associate Professor";
+                    break;
+                case E:
+                    return "Professor";
+                    break;
+                default:
+                    return "No Title";
+                    break;
+            }
         }
 
-        // Return the EmploymentLevel (A,B,C...) of the Position
+        // Return the EmploymentLevel (Student, A, B, etc) of the Position
         public string ToTitle(EmploymentLevel l)
         { 
-
+            return "" + l;
         }
     }
 }
