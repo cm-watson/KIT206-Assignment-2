@@ -32,12 +32,26 @@ namespace Assignment_2
         // A link to a photo of the Researcher
         public URL Photo { get; set; }
         // A string containing the type of researcher. Either 'Staff' or 'Student'
-        public String Type { get; set; }
-
+        public string Type { get; set; }
         // A list of the Researcher's Publications
         public List<Publication> Publications;
         // The Researcher's Position
         public Position Position { get; set; }
+
+        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
+        {
+            this.ID = ID;
+            this.GivenName = GivenName;
+            this.FamilyName = FamilyName;
+            this.Title = Title;
+            this.School = School;
+            this.Campus = Campus;
+            this.Email = Email;
+            this.Photo = Photo;
+            this.Type = Type;
+            this.Publications = Publications;
+            this.Position = Position;
+        }
 
         // Return the current Position of the Researcher
         public Position GetCurrentJob => Position;
