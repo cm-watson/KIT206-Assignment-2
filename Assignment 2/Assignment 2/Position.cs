@@ -24,8 +24,8 @@ namespace Assignment_2
 
         // Return the JobTitle (Postdoc,Lecturer,Prof) of the Position
         public string Title()
-        {
-                        
+        { 
+           return ToTitle(Level);
         }
 
         // Return the EmploymentLevel (A,B,C...) of the Position

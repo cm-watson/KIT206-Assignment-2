@@ -10,8 +10,6 @@ namespace Assignment_2
 {
     // The campus at which the Researcher attends
     public enum Campus { Hobart, Launceston, CradleCoast };
-    // The Researcher's job title
-    public enum JobTitle { PostDoc, Lecturer, SeniorLecturer, AssociateProf, Prof };
 
     public class Researcher
     {
@@ -26,7 +24,7 @@ namespace Assignment_2
         // The Researcher's school they work at
         public string School { get; set; }
         // The campus at which the Researcher works at
-        public Campus Campus { get; set; }
+        public string Campus { get; set; }
         // The Researcher's email address
         public string Email { get; set; }
         // A link to a photo of the Researcher
@@ -38,7 +36,8 @@ namespace Assignment_2
         // The Researcher's Position
         public Position Position { get; set; }
 
-        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
+        // Researcher Constructor
+        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, string Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
         {
             this.ID = ID;
             this.GivenName = GivenName;
