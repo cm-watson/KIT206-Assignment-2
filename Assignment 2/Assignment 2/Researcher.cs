@@ -33,11 +33,11 @@ namespace Assignment_2
         public string Type { get; set; }
         // A list of the Researcher's Publications
         public List<Publication> Publications;
-        // The Researcher's Position
-        public Position Position { get; set; }
+        // A list of the Researcher's Positions
+        public List<Position> Positions { get; set; }
 
         // Researcher Constructor
-        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, Position Position)
+        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
             this.GivenName = GivenName;
@@ -49,23 +49,51 @@ namespace Assignment_2
             this.Photo = Photo;
             this.Type = Type;
             this.Publications = Publications;
-            this.Position = Position;
+            this.Positions = Positions;
         }
 
         // Return the current Position of the Researcher
-        public Position GetCurrentJob => Position;
+        public Position GetCurrentJob()
+        {
+            Position Position;  // placeholder Position
+            int i = 0;  // incremental value
+
+            // Look through List until you find the Position with end date NULL
+            // This means that the Position is the Researcher's current Position
+            while(Positions<i>.End != NULL)
+            {
+                Position = Positions.Get(i);
+                i++;
+            }
+    
+            return Position;
+        }
 
         // Return the current job title of the Researcher
-        public string CurrentJobTitle => Position.Title();
+        public string CurrentJobTitle => GetCurrentJob.Title();
 
         // Return the start date of the Researcher's current job
-        public Date CurrentJobStart() => Position.Start;
+        public Date CurrentJobStart() => GetCurrentJob.Start;
 
         // Return the earliest job of the Researcher
         public Position GetEarliestJob()
         {
-            // Find the job with the earliest start in database
-            // Return corresponding job
+            Position EarliestJob = Positions.Get(0); // return value
+
+            for(int i=0; i<Positions.Count; i++)
+            {
+                Position Temp = Positions.Get(i); // temporary Position
+                
+                // If the temporary Position has an earlier starting date
+                if(Temp.Start < EarliestJob.Start)
+                {
+                    // Replace the earliest job with the temporary Position
+                    EarliestJob = Temp;
+                }
+            }
+
+            // Return the Earliest Job in the List
+            return EarliestJob;
         }
 
         // Return the start date of the Researcher's earliest job
