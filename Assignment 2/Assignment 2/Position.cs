@@ -22,11 +22,17 @@ namespace Assignment_2
             this.Start = Start;
             this.End = End;
         }
-
-        // Return the JobTitle (Postdoc, Lecturer, Prof, etc) of the Position
-        public string Title()
+        
+        // Return the EmploymentLevel (Student, A, B, etc) of the Position
+        public string GetEmploymentLevel()
         { 
-            switch(Level)
+            return "" + Level;
+        }
+        
+        // Return the JobTitle (Postdoc, Lecturer, Prof, etc) of the Position
+        public string GetJobTitle(EmploymentLevel l)
+        { 
+            switch(l)
             {
                 case A:
                     return "Postdoc";
@@ -47,12 +53,6 @@ namespace Assignment_2
                     return "No Title";
                     break;
             }
-        }
-
-        // Return the EmploymentLevel (Student, A, B, etc) of the Position
-        public string ToTitle(EmploymentLevel l)
-        { 
-            return "" + l;
         }
     }
 }
