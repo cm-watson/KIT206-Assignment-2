@@ -24,7 +24,7 @@ namespace Assignment_2
         }
         
         // Return the EmploymentLevel (Student, A, B, etc) of the Position
-        public string GetEmploymentLevel()
+        public string GetLevel()
         { 
             return "" + Level;
         }
