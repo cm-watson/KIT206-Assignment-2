@@ -68,7 +68,7 @@ namespace Assignment_2
         }
 
         // Return the current job title of the Researcher
-        public string CurrentJobTitle => GetCurrentJob().Title();
+        public string CurrentJobTitle => GetCurrentJob().GetJobTitle();
 
         // Return the start date of the Researcher's current job
         public DateTime CurrentJobStart => GetCurrentJob().Start;

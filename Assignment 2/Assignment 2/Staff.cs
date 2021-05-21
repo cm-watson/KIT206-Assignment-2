@@ -8,6 +8,9 @@ namespace Assignment_2
 {
     public class Staff:Researcher
     {
+        // A list of Students the Staff supervises
+        List<Student> Students { get; set; }
+
         // The total number of publications in the last three years / 3
         public float ThreeYearAverage(List<Publication> Publications)
         {
@@ -16,8 +19,14 @@ namespace Assignment_2
         // The Researcher's ThreeYearAverage / expected number of Publications based on their EmploymentLevel
         public float Performance(List<Publication> Publications)
         {
+            // The ThreeYearAverage of the Staff
             float ThreeYearAverage = ThreeYearAverage(Publications);
-            // ..... //
+            // The EmploymentLevel of the Staff
+            Position.EmploymentLevel Level = GetCurrentJob().GetEmploymentLevel();
+            // The expected number of Publications
+            int ExpectedNumber = 0;
+
+
         }
     }
 }

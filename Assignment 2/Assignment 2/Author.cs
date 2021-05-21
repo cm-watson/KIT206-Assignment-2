@@ -11,6 +11,7 @@ namespace Assignment_2
         // The name of the Author
         string Name;
 
+        // Author Constructor
         public Author(string Name)
         {
             this.Name = Name;
