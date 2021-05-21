@@ -57,11 +57,9 @@ namespace Assignment_2
 		// fname, lname, title, level, type, NTH: photo
 
 
-        //For step 2.2 in Week 8 tutorial
-        public static List<Researcher> FetchFullResearcherDetails()
+        //Fetch full Researcher details from database
+        public static Researcher FetchFullResearcherDetails(int ResearcherID)
         {
-            List<Researcher> researchers = new List<Researcher>();
-
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
 
@@ -71,40 +69,38 @@ namespace Assignment_2
 
                 MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, 
                 	title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, 
-                	current_start from researcher", conn);
+                	current_start from researcher where id=?ResearcherID", conn);
                 rdr = cmd.ExecuteReader();
 
-                while (rdr.Read())
-                {
-                    //Note that in your assignment you will need to inspect the *type* of the
-                    //employee/researcher before deciding which kind of concrete class to create.
-                    
-                    int ID = rdr.GetInt32(0);
-                    Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
-                    String GivenName = rdr.GetString(2);
-                    String FamilyName = rdr.GetString(3);
-                    String Title = rdr.GetString(4);
-                    String Unit = rdr.GetString(5);
-                    Researcher.Campus CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
-                    String Email = rdr.GetString(7);
-                    String Photo = rdr.GetString(8);
-                    String Degree = rdr.GetString(9);		
-                    int SupervisorID = rdr.GetString(10);	
-                    String Level = rdr.GetString(11);
-                    String UtasStart = rdr.GetDateTime(12);
-                    String CurrentStart = rdr.GetDateTime(13);                    
-                    
-                    
-                    
-                    staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
-                    //rdr.getName .getValue  .getString
-                }
-
+				//Researcher information
+				int ID = rdr.GetInt32(0);
+				Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
+				String GivenName = rdr.GetString(2);
+				String FamilyName = rdr.GetString(3);
+				String Title = rdr.GetString(4);
+				String Unit = rdr.GetString(5);
+				Researcher.Campus CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
+				String Email = rdr.GetString(7);
+				String Photo = rdr.GetString(8);
+				String Degree = rdr.GetString(9);		
+				int SupervisorID = rdr.GetString(10);	
+				String Level = rdr.GetString(11);
+				String UtasStart = rdr.GetDateTime(12);
+				String CurrentStart = rdr.GetDateTime(13);                    
+				
+				//Creat new researcher 
+				Researcher FullResearcher = new Researcher { ID = this.ID, GivenName = this.GivenName,
+					FamilyName = this.FamilyName, Title = this.Title, Unit = this.Unit, 
+					Campus = CurrentCampus, Email = this.Email, Photo = this.Photo, Degree = this.
+					
+				};
+				
+				//rdr.getName .getValue  .getString
                
             }
             catch (MySqlException e)
             {
-                ReportError("loading staff", e);
+                ReportError("loading researcher", e);
             }
             finally
             {
@@ -118,7 +114,7 @@ namespace Assignment_2
                 }
             }
 
-            return staff;
+            return FullResearcher;
         }
 
         //For step 2.2 in Week 8 tutorial
