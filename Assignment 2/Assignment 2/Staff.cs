@@ -54,5 +54,6 @@ namespace Assignment_2
             return (ThreeYearAverage / ExpectedNumber);
 
         }
+   
     }
 }
