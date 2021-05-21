@@ -7,16 +7,10 @@ namespace Assignment_2
     abstract class ResearcherController
     {
         // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers()
-        {
-            return ERDAdapter.FetchBasicResearcherDetails();
-        }
+        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
         // Complete the details of a Researcher
-        public void LoadResearcherDetails()
-        {
-            ERDAdapter.CompleteResearcherDetails();
-        }
+        public void LoadResearcherDetails() => ERDAdapter.CompleteResearcherDetails();
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
