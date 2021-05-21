@@ -20,7 +20,7 @@ namespace Assignment_2
         // The year the Publication was published
         public int Year { get; set; }
         // The type of publication the Publication is
-        public Type OutputType { get; set; }
+        public OutputType Type { get; set; }
         // A string containing what the Publication should be cited as
         public string Cite { get; set; }
         // The year the Publication first became available
@@ -39,6 +39,19 @@ namespace Assignment_2
             this.Age = Age;
         }
 
+        // Returns the Age of the Publication
+        public int Age()
+        {
+            // The current date
+            DateTime CurrentDate = DateTime.Now();
+
+            // The time since the Publication became available
+            TimeSpan Difference = CurrentDate.Subtract(DateAvailable);
+
+            // Return the days elapsed since the Publication became available
+            return Difference.Days;
+        }
+
         /* For testing
          *
         static void Main(string[] args)
@@ -51,7 +64,7 @@ namespace Assignment_2
         }
         */
 
-        // Formats the year?
+        // Formats the year
         static string FormatYear(int year, string title)
         {
 
