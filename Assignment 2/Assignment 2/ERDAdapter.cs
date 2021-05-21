@@ -10,6 +10,9 @@ using MySql.Data.Types;
 
 namespace Assignment_2
 {
+	// The researcher type
+    public enum Type { Student, Staff };
+
     abstract class ERDAdapter
     {
         //If including error reporting within this class (as this sample does) then you'll need a way
@@ -77,19 +80,19 @@ namespace Assignment_2
                     //employee/researcher before deciding which kind of concrete class to create.
                     
                     int ID = rdr.GetInt32(0);
-                    String givenName = rdr.GetString(1);
-                    String familyName = rdr.GetString(2);
-                    String title = rdr.GetString(3);		// Needs operation
-                    String unit = rdr.GetString(4);
-                    String campus = rdr.GetString(5);		// " "
-                    String email = rdr.GetString(6);
-                    String familyName = rdr.GetString(7);
-                    String photo = rdr.GetString(8);
-                    String degree = rdr.GetString(9);		// " "
-                    int supervisorID = rdr.GetString(2);
-                    String level = rdr.GetString(10);
-                    String degree = rdr.GetString(9);
-                    
+                    Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
+                    String GivenName = rdr.GetString(2);
+                    String FamilyName = rdr.GetString(3);
+                    String Title = rdr.GetString(4);
+                    String Unit = rdr.GetString(5);
+                    Researcher.Campus CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
+                    String Email = rdr.GetString(7);
+                    String Photo = rdr.GetString(8);
+                    String Degree = rdr.GetString(9);		
+                    int SupervisorID = rdr.GetString(10);	
+                    String Level = rdr.GetString(11);
+                    String UtasStart = rdr.GetDateTime(12);
+                    String CurrentStart = rdr.GetDateTime(13);                    
                     
                     
                     
