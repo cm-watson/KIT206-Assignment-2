@@ -22,7 +22,7 @@ namespace Assignment_2
         // The Researcher's school they work at
         public string School { get; set; }
         // The campus at which the Researcher works at
-        public Campus Campus { get; set; }
+        public Campus CurrentCampus { get; set; }
         // The Researcher's email address
         public string Email { get; set; }
         // A link to a photo of the Researcher

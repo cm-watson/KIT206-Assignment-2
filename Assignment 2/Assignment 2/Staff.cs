@@ -16,6 +16,7 @@ namespace Assignment_2
         {
             return Publications.Count / 3;
         }
+        
         // The Researcher's ThreeYearAverage / expected number of Publications based on their EmploymentLevel
         public float Performance(List<Publication> Publications)
         {
@@ -24,8 +25,33 @@ namespace Assignment_2
             // The EmploymentLevel of the Staff
             Position.EmploymentLevel Level = GetCurrentJob().GetEmploymentLevel();
             // The expected number of Publications
-            int ExpectedNumber = 0;
+            float ExpectedNumber = 0;
 
+            // Determine the expected number of Publications based on the Staff's EmploymentLevel
+            switch(Level)
+            {
+                case A:
+                    ExpectedNumber = 0.5;
+                    break;
+                case B:
+                    ExpectedNumber = 1;
+                    break;
+                case C:
+                    ExpectedNumber = 2;
+                    break;
+                case D:
+                    ExpectedNumber = 3.2;
+                    break;
+                case E:
+                    ExpectedNumber = 4;
+                    break;
+                default: 
+                    ExpectedNumber = -1;
+                    break;
+            }
+
+            // Return the Performance of the Staff
+            return (ThreeYearAverage / ExpectedNumber);
 
         }
     }

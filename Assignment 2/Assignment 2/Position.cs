@@ -16,7 +16,7 @@ namespace Assignment_2
         public DateTime End { get; set; }
 
         // Position Constructor
-        public Position(EmployementLevel Level, DateTime Start, DateTime End) 
+        public Position(EmploymentLevel Level, DateTime Start, DateTime End) 
         {
             this.Level = Level;
             this.Start = Start;
