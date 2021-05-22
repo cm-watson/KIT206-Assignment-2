@@ -13,6 +13,8 @@ namespace Assignment_2
     {
         // The Researcher's private ID
         private int ID { get; set; }
+        // A string containing the type of researcher. Either 'Staff' or 'Student'.
+        public Type CurrentType { get; set; }
         // The Researcher's first name
         public string GivenName { get; set; }
         // The Researcher's last name
@@ -27,8 +29,10 @@ namespace Assignment_2
         public string Email { get; set; }
         // A link to a photo of the Researcher
         public string Photo { get; set; }
-        // A string containing the type of researcher. Either 'Staff' or 'Student'.
-        public Type CurrentType { get; set; }
+        // The Researcher's Degree
+        public string Degree { get; set; }
+        // The Researcher's supervisor's ID
+        public int SupervisorID { get; set; }
         // A list of the Researcher's Publications
         public List<Publication> Publications;
         // A list of the Researcher's Positions

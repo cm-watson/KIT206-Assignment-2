@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment_2
 {
-    public enum EmploymentLevel { Student, A, B, C, D, E };
+    public enum EmploymentLevel { A, B, C, D, E };
 
     public class Position
     {
