@@ -8,13 +8,16 @@ namespace Assignment_2
 {
     class Student:Researcher
     {
-        // The name of the Student's degree
+        // The name of the Student's degree 
         public string Degree { get; set; }
+        // The Student's supervisor's ID
+        public int SupervisorID { get; set; }
 
         // Student Constructor
-        public Student(string Degree)
+        public Student(string Degree, int SupervisorID)
         {
             this.Degree = Degree;
+            this.SueprvisorID = SupervisorID;
         }
     }
 }

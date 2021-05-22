@@ -52,7 +52,7 @@ namespace Assignment_2
             return Difference.Days;
         }
 
-        /* For testing
+        /* TO BE REVIEWED
          *
         static void Main(string[] args)
         {
@@ -62,7 +62,6 @@ namespace Assignment_2
             Console.WriteLine(publication);
 
         }
-        */
 
         // Formats the year
         static string FormatYear(int year, string title)
@@ -75,5 +74,6 @@ namespace Assignment_2
         {
 
         }
+        */
     }
 }

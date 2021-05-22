@@ -29,10 +29,6 @@ namespace Assignment_2
         public string Email { get; set; }
         // A link to a photo of the Researcher
         public string Photo { get; set; }
-        // The Researcher's Degree
-        public string Degree { get; set; }
-        // The Researcher's supervisor's ID
-        public int SupervisorID { get; set; }
         // A list of the Researcher's Publications
         public List<Publication> Publications;
         // A list of the Researcher's Positions
