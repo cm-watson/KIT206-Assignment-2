@@ -10,9 +10,6 @@ using MySql.Data.Types;
 
 namespace Assignment_2
 {
-	// The researcher type
-    public enum Type { Student, Staff };
-
     abstract class ERDAdapter
     {
         //If including error reporting within this class (as this sample does) then you'll need a way
@@ -89,9 +86,9 @@ namespace Assignment_2
 				String CurrentStart = rdr.GetDateTime(13);                    
 				
 				//Creat new researcher 
-				Researcher FullResearcher = new Researcher { ID = this.ID, GivenName = this.GivenName,
-					FamilyName = this.FamilyName, Title = this.Title, Unit = this.Unit, 
-					Campus = CurrentCampus, Email = this.Email, Photo = this.Photo, Degree = this.
+				Researcher FullResearcher = new Researcher { ID = this.ID, CurrentType = this.CurrentType, 
+					GivenName = this.GivenName, FamilyName = this.FamilyName, Title = this.Title, Unit = this.Unit, 
+					Campus = CurrentCampus, Email = this.Email, Photo = this.Photo, Degree = this.Degree, SupervisorID = this.SupervisorID 
 					
 				};
 				

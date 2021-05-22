@@ -8,21 +8,25 @@ namespace Assignment_2
 {
     // The campus at which the Researcher attends
     public enum Campus { Hobart, Launceston, CradleCoast };
+    
+    // The researcher type
+    public enum Type { Student, Staff };
 
     public class Researcher
     {
         // The Researcher's private ID
         private int ID { get; set; }
+        // The Researcher's type
+        public Type CurrentType { get; set; }
         // The Researcher's first name
         public string GivenName { get; set; }
         // The Researcher's last name
         public string FamilyName { get; set; }
         // The Researcher's job title
         public string Title { get; set; }
-        // The Researcher's school they work at
-        public string School { get; set; }
         // The campus at which the Researcher works at
         public Campus CurrentCampus { get; set; }
+        // The current 
         // The Researcher's email address
         public string Email { get; set; }
         // A link to a photo of the Researcher
