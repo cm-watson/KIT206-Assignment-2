@@ -10,7 +10,7 @@ namespace Assignment_2
         public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
         // Complete the details of a Researcher
-        public void LoadResearcherDetails() => ERDAdapter.CompleteResearcherDetails();
+        public void LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
@@ -43,9 +43,11 @@ namespace Assignment_2
             // Remove all Researchers that don't have the correct Name
             for (int i = 0; i < FilteredList.Count; i++ )
             {
-                string ResearcherName = FilteredList.Get(i).Name;
+                string FirstName = FilteredList.Get(i).GivenName;
+                string LastName = FilteredList.Get(i).FamilyName;
+
                 // If the Researcher doesn't have the correct Name...
-                if(ResearcherName != Name)
+                if(!FirstName.Contains(Name) || !LastName.Contains(Name))
                 {
                     //... then remove them from the FilteredList
                     FilteredList.Remove(i);
