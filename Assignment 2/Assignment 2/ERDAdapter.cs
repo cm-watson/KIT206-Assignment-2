@@ -129,16 +129,12 @@ namespace Assignment_2
 
                 while (rdr.Read())
                 {
-                    //Note that in your assignment you will need to inspect the *type* of the
-                    //employee/researcher before deciding which kind of concrete class to create.
                     BasicResearchers.Add(new Researcher { ID = rdr.GetInt32(0), 
                     Type = ParseEnum<Researcher.Type>(rdr.GetString(1)), GivenName = rdr.GetString(2), 
-                    FamilyName = rdr.GetString(3), Title = rdr.GetString(4), 
+                    FamilyName = rdr.GetString(3), Title = rdr.GetString(4),
                     Positions = new List<Position> {new Position {EmploymentLevel = ParseEnum<Position.EmploymentLevel>(rdr.GetString(5)), Start = NULL, End = NULL}},
                     Photo = rdr.GetString(6)
                     });
-                    
-                    
                 }
             }
             catch (MySqlException e)
@@ -159,6 +155,9 @@ namespace Assignment_2
 
             return BasicResearchers;
         }
+
+
+
 
         //For step 2.3 in Week 8 tutorial
         public static List<TrainingSession> LoadTrainingSessions(int id)
