@@ -16,7 +16,7 @@ namespace Assignment_2
         // The title of the Publication
         public string Title { get; set; }
         // A list of authors that contributed to the Publication
-        public List<string> Authors { get; set; }
+        public List<Researcher> Authors { get; set; }
         // The year the Publication was published
         public int Year { get; set; }
         // The type of publication the Publication is
@@ -29,7 +29,7 @@ namespace Assignment_2
         public int Age { get; set; }
 
         // Publication Constructor
-        public Publication(string DOI, string Title, int Year, string Cite, int DateAvailable, int Age)
+        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, int DateAvailable, int Age)
         {
             this.DOI = DOI;
             this.Title = Title;
@@ -52,7 +52,7 @@ namespace Assignment_2
             return Difference.Days;
         }
 
-        /* For testing
+        /* TO BE REVIEWED
          *
         static void Main(string[] args)
         {
@@ -62,7 +62,6 @@ namespace Assignment_2
             Console.WriteLine(publication);
 
         }
-        */
 
         // Formats the year
         static string FormatYear(int year, string title)
@@ -75,5 +74,6 @@ namespace Assignment_2
         {
 
         }
+        */
     }
 }

@@ -9,7 +9,13 @@ namespace Assignment_2
     public class Staff:Researcher
     {
         // A list of Students the Staff supervises
-        List<Student> Students { get; set; }
+        public List<Student> Students { get; set; }
+        // The Staff's phone number
+        public int PhoneNumber { get; set; }
+        // The Staff's room number
+        public string Room { get; set; }
+        // The Staff's category
+        public string Category { get; set; }
 
         // The total number of publications in the last three years / 3
         public float ThreeYearAverage(List<Publication> Publications)
