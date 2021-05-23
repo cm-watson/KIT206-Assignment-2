@@ -15,8 +15,8 @@ namespace Assignment_2
         public string DOI { get; set; }
         // The title of the Publication
         public string Title { get; set; }
-        // A list of authors that contributed to the Publication
-        public List<Researcher> Authors { get; set; }
+        // A list of author names that contributed to the Publication
+        public String Authors { get; set; }
         // The year the Publication was published
         public int Year { get; set; }
         // The type of publication the Publication is
@@ -24,7 +24,7 @@ namespace Assignment_2
         // A string containing what the Publication should be cited as
         public string Cite { get; set; }
         // The year the Publication first became available
-        public int DateAvailable { get; set; }
+        public DateTime DateAvailable { get; set; }
         // The time (in days elapsed) since the Publication became available
         public int Age { get; set; }
 
