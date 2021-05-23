@@ -47,13 +47,6 @@ namespace Assignment_2
         }
 
 
-		researcherID = researcher.getID();
-
-
-		// Researcher basic details
-		// fname, lname, title, level, type, NTH: photo
-
-
         //Fetch full Researcher details from database
         public static Researcher FetchFullResearcherDetails(int ResearcherID)
         {
@@ -64,12 +57,14 @@ namespace Assignment_2
             {
                 conn.Open();
 
+				// Or could use select *
                 MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, 
                 	title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, 
                 	current_start from researcher where id=?ResearcherID", conn);
                 rdr = cmd.ExecuteReader();
 
 				//Researcher information
+				List<Position> Positions = new List<Position>;
 				int ID = rdr.GetInt32(0);
 				Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
 				String GivenName = rdr.GetString(2);
@@ -83,16 +78,18 @@ namespace Assignment_2
 				int SupervisorID = rdr.GetString(10);	
 				String Level = rdr.GetString(11);
 				String UtasStart = rdr.GetDateTime(12);
-				String CurrentStart = rdr.GetDateTime(13);                    
+				String CurrentStart = rdr.GetDateTime(13);
 				
-				//Creat new researcher 
+				Position CurrentPosition = new Position { EmploymentLevel = Level, Start = CurrentStart, End = NULL};
+				
+				Positions.add(CurrentPosition);
+				
+				//Create new researcher 
 				Researcher FullResearcher = new Researcher { ID = this.ID, CurrentType = this.CurrentType, 
-					GivenName = this.GivenName, FamilyName = this.FamilyName, Title = this.Title, Unit = this.Unit, 
-					Campus = CurrentCampus, Email = this.Email, Photo = this.Photo, Degree = this.Degree, SupervisorID = this.SupervisorID 
-					
+					GivenName = this.GivenName, FamilyName = this.FamilyName, Title = this.Title, 
+					Unit = this.Unit, CurrentCampus = CurrentCampus, Email = this.Email, 
+					Photo = this.Photo, Degree = this.Degree, SupervisorID = this.SupervisorID, Positions = this.Positions
 				};
-				
-				//rdr.getName .getValue  .getString
                
             }
             catch (MySqlException e)
@@ -113,11 +110,12 @@ namespace Assignment_2
 
             return FullResearcher;
         }
+        
 
-        //For step 2.2 in Week 8 tutorial
-        public static List<Employee> LoadAll()
+        // Fetch basic details for Researchers
+        public static List<Researcher> FetchBasicResearcherDetails()
         {
-            List<Employee> staff = new List<Employee>();
+            List<Researcher> BasicResearchers = new List<Researcher>();
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
@@ -125,15 +123,22 @@ namespace Assignment_2
             try
             {
                 conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+				
+                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, level, photo from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
                     //Note that in your assignment you will need to inspect the *type* of the
                     //employee/researcher before deciding which kind of concrete class to create.
-                    staff.Add(new Employee { ID = rdr.GetInt32(0), Name = rdr.GetString(1) + " " + rdr.GetString(2) });
+                    BasicResearchers.Add(new Researcher { ID = rdr.GetInt32(0), 
+                    Type = ParseEnum<Researcher.Type>(rdr.GetString(1)), GivenName = rdr.GetString(2), 
+                    FamilyName = rdr.GetString(3), Title = rdr.GetString(4), 
+                    Positions = new List<Position> {new Position {EmploymentLevel = ParseEnum<Position.EmploymentLevel>(rdr.GetString(5)), Start = NULL, End = NULL}},
+                    Photo = rdr.GetString(6)
+                    });
+                    
+                    
                 }
             }
             catch (MySqlException e)
@@ -152,7 +157,7 @@ namespace Assignment_2
                 }
             }
 
-            return staff;
+            return BasicResearchers;
         }
 
         //For step 2.3 in Week 8 tutorial
