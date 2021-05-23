@@ -112,7 +112,7 @@ namespace Assignment_2
         }
         
 
-        // Fetch basic details for Researchers
+        // Fetch basic details for all Researchers
         public static List<Researcher> FetchBasicResearcherDetails()
         {
             List<Researcher> BasicResearchers = new List<Researcher>();
@@ -130,16 +130,62 @@ namespace Assignment_2
                 while (rdr.Read())
                 {
                     BasicResearchers.Add(new Researcher { ID = rdr.GetInt32(0), 
-                    Type = ParseEnum<Researcher.Type>(rdr.GetString(1)), GivenName = rdr.GetString(2), 
-                    FamilyName = rdr.GetString(3), Title = rdr.GetString(4),
-                    Positions = new List<Position> {new Position {EmploymentLevel = ParseEnum<Position.EmploymentLevel>(rdr.GetString(5)), Start = NULL, End = NULL}},
-                    Photo = rdr.GetString(6)
+                    	Type = ParseEnum<Researcher.Type>(rdr.GetString(1)), GivenName = rdr.GetString(2), 
+                    	FamilyName = rdr.GetString(3), Title = rdr.GetString(4),
+                    	Positions = new List<Position> {new Position {EmploymentLevel = ParseEnum<Position.EmploymentLevel>(rdr.GetString(5)), Start = NULL, End = NULL}},
+                    	Photo = rdr.GetString(6)
                     });
                 }
             }
             catch (MySqlException e)
             {
-                ReportError("loading staff", e);
+                ReportError("loading researchers", e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return BasicResearchers;
+        }
+
+		// Complete details for Researcher
+        public static Researcher CompleteResearcherDetails(Reseacher BasicResearcher)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+            // The ResearcherID of the passed Researcher
+            int ResearcherID = BasicResearcher.ID;
+
+            try
+            {
+                conn.Open();
+				
+                // Or could use select *
+				MySqlCommand cmd = new MySqlCommand("select * from researcher where id=?ResearcherID", conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+					//Update Researcher information
+					BasicResearcher.Unit = rdr.GetString(5);
+					BasicResearcher.CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
+					BasicResearcher.Email = rdr.GetString(7);
+					BasicResearcher.Photo = rdr.GetString(8);
+					BasicResearcher.Degree = rdr.GetString(9);		
+					BasicResearcher.SupervisorID = rdr.GetString(10);
+                }
+            }
+            catch (MySqlException e)
+            {
+                ReportError("updating Researcher", e);
             }
             finally
             {
