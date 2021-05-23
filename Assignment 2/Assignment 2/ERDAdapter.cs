@@ -50,6 +50,8 @@ namespace Assignment_2
         //Fetch full Researcher details from database
         public static Researcher FetchFullResearcherDetails(int ResearcherID)
         {
+        	List<Position> Positions = new List<Position>(); // List of Researcher's previous and current Positions
+        	
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
 
@@ -64,8 +66,6 @@ namespace Assignment_2
                 rdr = cmd.ExecuteReader();
 
 				//Researcher information
-				List<Position> Positions = new List<Position>();
-				int ID = rdr.GetInt32(0);
 				Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
 				String GivenName = rdr.GetString(2);
 				String FamilyName = rdr.GetString(3);
@@ -76,13 +76,13 @@ namespace Assignment_2
 				String Photo = rdr.GetString(8);
 				String Degree = rdr.GetString(9);		
 				int SupervisorID = rdr.GetString(10);	
-				String Level = rdr.GetString(11);
+				Position.EmploymentLevel Level = ParseEnum<Position.EmploymentLevel>(rdr.GetString(11));
 				String UtasStart = rdr.GetDateTime(12);
 				String CurrentStart = rdr.GetDateTime(13);
 				
 				Position CurrentPosition = new Position { EmploymentLevel = Level, Start = CurrentStart, End = NULL};
 				
-				Positions.add(CurrentPosition);
+				Positions.Add(CurrentPosition);
 				
 				//Create new researcher 
 				Researcher FullResearcher = new Researcher { ID = this.ID, CurrentType = this.CurrentType, 
@@ -203,6 +203,51 @@ namespace Assignment_2
 
 
 
+        //Fetch full Researcher Position history 
+        public static Researcher FetchFullResearcherPositions(Researcher R)
+        {
+        	int ID = R.ID; // Researcher's ID
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select * from position where id=?ID", conn);
+                rdr = cmd.ExecuteReader();
+
+				  while (rdr.Read())
+                {
+                    Position.EmploymentLevel Level = ParseEnum<Position.EmploymentLevel>(rdr.GetString(1));
+					DateTime Start = rdr.GetDateTime(2);
+					DateTime End = rdr.GetDateTime(3);
+					
+					if(End != NULL){
+						R.Positions.Add(new Position {EmploymentLevel = Level, Start = this.Start, End = this.End});
+					}
+                }
+            }
+            catch (MySqlException e)
+            {
+                ReportError("loading researcher positions", e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return FullResearcher;
+        }
+
+
         // Fetch basic details for all Publications by a Researcher
         public static List<Publication> FetchBasicPublicationDetails(Researcher R)
         {
@@ -224,7 +269,7 @@ namespace Assignment_2
 
 				while (rdr.Read())
 				{
-					DOIList.add( rdr.GetString(0) );
+					DOIList.Add( rdr.GetString(0) );
 				}
 			}
             catch (MySqlException e)
@@ -250,9 +295,9 @@ namespace Assignment_2
 				MySqlDataReader rdr = null;
                 conn.Open();
 				
-				while (DOIList.length != 0) {
+				while (DOIList.Count != 0) {
 					// Get next DOI
-					cDOI = DOIList.get(0);
+					cDOI = DOIList[0];
 				
 					MySqlCommand cmd = new MySqlCommand("select title, year from publication where doi=?cDOI", conn);
 					rdr = cmd.ExecuteReader();
@@ -262,7 +307,7 @@ namespace Assignment_2
 						BasicPublications.Add(new Publication { DOI = cDOI, Title = rdr.GetString(0), Year = rdr.GetInt32(1) });
 					}
 					
-					DOIList.remove(0);
+					DOIList.Remove(0);
 				}
 			}
             catch (MySqlException e)
@@ -327,121 +372,27 @@ namespace Assignment_2
             return P;
         }
 	
-		
-        //Fetch full Researcher details from database
-        public static int[] FetchPublicationCounts(int ResearcherID)
+        // Returns the number of publications from a researcher that were published per year.
+        // Has O(n^2). Future revisions can make it O(n) with PCount[-1*(From-Year)]
+        public static int[] FetchPublicationCounts(int From, int To, Researcher R)
         {
-            MySqlConnection conn = GetConnection();
-            MySqlDataReader rdr = null;
+        	int[] PCount = new int[(To - From) + 1]; // int array with length equal to number of years (inclusive)
+        	List<Publication> P = FetchBasicPublicationDetails(R); // List of all publications by researcher
+        	
+    		for(int i=0; i<Pcount.Length; i++){
+    			PCount[i] = 0;	// Set default value
+    		
+    			for(int j=0; j<P.Count; j++){
+    				if(P[j].Year == (To + i)){
+    					PCount++;
+    				}
+    			}
+    		}
 
-            try
-            {
-                conn.Open();
-
-				// Or could use select *
-                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, 
-                	title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, 
-                	current_start from researcher where id=?ResearcherID", conn);
-                rdr = cmd.ExecuteReader();
-
-				//Researcher information
-				List<Position> Positions = new List<Position>;
-				int ID = rdr.GetInt32(0);
-				Type CurrentType = ParseEnum<Type>(rdr.GetString(1));
-				String GivenName = rdr.GetString(2);
-				String FamilyName = rdr.GetString(3);
-				String Title = rdr.GetString(4);
-				String Unit = rdr.GetString(5);
-				Researcher.Campus CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
-				String Email = rdr.GetString(7);
-				String Photo = rdr.GetString(8);
-				String Degree = rdr.GetString(9);		
-				int SupervisorID = rdr.GetString(10);	
-				String Level = rdr.GetString(11);
-				String UtasStart = rdr.GetDateTime(12);
-				String CurrentStart = rdr.GetDateTime(13);
-				
-				Position CurrentPosition = new Position { EmploymentLevel = Level, Start = CurrentStart, End = NULL};
-				
-				Positions.add(CurrentPosition);
-				
-				//Create new researcher 
-				Researcher FullResearcher = new Researcher { ID = this.ID, CurrentType = this.CurrentType, 
-					GivenName = this.GivenName, FamilyName = this.FamilyName, Title = this.Title, 
-					Unit = this.Unit, CurrentCampus = CurrentCampus, Email = this.Email, 
-					Photo = this.Photo, Degree = this.Degree, SupervisorID = this.SupervisorID, Positions = this.Positions
-				};
-               
-            }
-            catch (MySqlException e)
-            {
-                ReportError("loading researcher", e);
-            }
-            finally
-            {
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-
-            return FullResearcher;
+            return PCount;
         }
 	
 
-
-        //For step 2.3 in Week 8 tutorial
-        public static List<TrainingSession> LoadTrainingSessions(int id)
-        {
-            List<TrainingSession> work = new List<TrainingSession>();
-
-            MySqlConnection conn = GetConnection();
-            MySqlDataReader rdr = null;
-
-            try
-            {
-                conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("select title, year, type, available " +
-                                                    "from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi=respub.doi and researcher_id=?id", conn);
-
-                cmd.Parameters.AddWithValue("id", id);
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    work.Add(new TrainingSession
-                    {
-                        Title = rdr.GetString(0),
-                        Year = rdr.GetInt32(1),
-                        Mode = ParseEnum<Mode>(rdr.GetString(2)),
-                        Certified = rdr.GetDateTime(3)
-                    });
-                }
-            }
-            catch (MySqlException e)
-            {
-                ReportError("loading training sessions", e);
-            }
-            finally
-            {
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-
-            return work;
-        }
 
         /// <summary>
         /// In a more complete application this error would be logged to a file
