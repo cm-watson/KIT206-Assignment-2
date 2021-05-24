@@ -156,7 +156,7 @@ namespace Assignment_2
         }
 
 		// Complete details for Researcher
-        public static Researcher CompleteResearcherDetails(Reseacher BasicResearcher)
+        public static Researcher CompleteResearcherDetails(Researcher BasicResearcher)
         {
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
@@ -200,7 +200,6 @@ namespace Assignment_2
 
             return BasicResearchers;
         }
-
 
 
         //Fetch full Researcher Position history 
