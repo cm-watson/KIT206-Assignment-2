@@ -49,7 +49,7 @@ namespace Assignment_2
             this.CurrentCampus = Campus;
             this.Email = Email;
             this.Photo = Photo;
-            this.CurrentType = Type;
+            this.CurrentType = RType;
             this.Publications = Publications;
             this.Positions = Positions;
         }
