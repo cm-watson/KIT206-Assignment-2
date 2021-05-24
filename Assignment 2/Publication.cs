@@ -27,14 +27,13 @@ namespace Assignment_2
         public DateTime DateAvailable { get; set; }
 
         // Publication Constructor
-        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, DateTime DateAvailable, int Age)
+        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, DateTime DateAvailable)
         {
             this.DOI = DOI;
             this.Title = Title;
             this.Year = Year;
             this.Cite = Cite;
             this.DateAvailable = DateAvailable;
-            this.Age = Age;
         }
 
         // Returns the Age of the Publication
@@ -50,28 +49,6 @@ namespace Assignment_2
             return Difference.Days;
         }
 
-        /* TO BE REVIEWED
-         *
-        static void Main(string[] args)
-        {
-
-            Publication publication = new Publication("idk", "title", 2021, "idk", 21, 21);
-
-            Console.WriteLine(publication);
-
-        }
-
-        // Formats the year
-        static string FormatYear(int year, string title)
-        {
-
-        }
-
-        // Sorts the Publications alphabetically
-        static string SortAlphabetically(string title)
-        {
-
-        }
-        */
     }
+
 }
