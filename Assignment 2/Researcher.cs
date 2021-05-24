@@ -52,9 +52,10 @@ namespace Assignment_2
 
 
         // Researcher Constructor
-        public Researcher(int ID, Type ResearcherType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
+        public Researcher(int ID, Type ResearcherType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, int SupervisorID, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
+            this.CurrentType = ResearcherType;
             this.GivenName = GivenName;
             this.FamilyName = FamilyName;
             this.Title = Title;
@@ -62,7 +63,7 @@ namespace Assignment_2
             this.CurrentCampus = Campus;
             this.Email = Email;
             this.Photo = Photo;
-            this.CurrentType = ResearcherType;
+            this.SupervisorID = SupervisorID;
             this.Publications = Publications;
             this.Positions = Positions;
         }

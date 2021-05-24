@@ -51,7 +51,8 @@ namespace Assignment_2
         public static Researcher FetchFullResearcherDetails(int ResearcherID)
         {
         	List<Position> Positions = new List<Position>(); // List of Researcher's previous and current Positions
-        	
+        	Researcher FullResearcher = null; 
+
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
 
@@ -85,10 +86,10 @@ namespace Assignment_2
 				Positions.Add(CurrentPosition);
 				
 				//Create new researcher 
-				Researcher FullResearcher = new Researcher ( ResearcherID, CurrentType, 
+				FullResearcher = new Researcher ( ResearcherID, CurrentType, 
 					GivenName, FamilyName, Title, 
 					Unit, CurrentCampus, Email, 
-					Photo, Degree, SupervisorID, Positions
+					Photo, Degree, SupervisorID, null, Positions
 				);
                
             }
@@ -128,12 +129,13 @@ namespace Assignment_2
 
                 while (rdr.Read())
                 {
-                    BasicResearchers.Add(new Researcher { ID = rdr.GetInt32(0), 
-                    	Type = ParseEnum<Researcher.Type>(rdr.GetString(1)), GivenName = rdr.GetString(2), 
-                    	FamilyName = rdr.GetString(3), Title = rdr.GetString(4),
-                    	Positions = new List<Position>() {new Position {EmploymentLevel = ParseEnum<Position.EmploymentLevel>(rdr.GetString(5)), Start = NULL, End = NULL}},
-                    	Photo = rdr.GetString(6)
-                    });
+                    // Missing EMAIL
+                    BasicResearchers.Add(new Researcher ( rdr.GetInt32(0), 
+                    	ParseEnum<Type>(rdr.GetString(1)), rdr.GetString(2), 
+                    	rdr.GetString(3), rdr.GetString(4),
+                    	new List<Position>() { new Position ( ParseEnum<EmploymentLevel>(rdr.GetString(5)), DateTime.Now, DateTime.Now ) },
+                    	rdr.GetString(6)
+                    ));
                 }
             }
             catch (MySqlException e)
@@ -175,11 +177,11 @@ namespace Assignment_2
                 {
 					//Update Researcher information
 					BasicResearcher.Unit = rdr.GetString(5);
-					BasicResearcher.CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
+					BasicResearcher.CurrentCampus = ParseEnum<Campus>(rdr.GetString(6));
 					BasicResearcher.Email = rdr.GetString(7);
 					BasicResearcher.Photo = rdr.GetString(8);
 					BasicResearcher.Degree = rdr.GetString(9);		
-					BasicResearcher.SupervisorID = rdr.GetString(10);
+					BasicResearcher.SupervisorID = rdr.GetInt32(10);
                 }
             }
             catch (MySqlException e)
@@ -198,7 +200,7 @@ namespace Assignment_2
                 }
             }
 
-            return BasicResearchers;
+            return BasicResearcher;
         }
 
 
@@ -218,12 +220,12 @@ namespace Assignment_2
 
 				  while (rdr.Read())
                 {
-                    Position.EmploymentLevel Level = ParseEnum<Position.EmploymentLevel>(rdr.GetString(1));
+                    EmploymentLevel Level = ParseEnum<EmploymentLevel>(rdr.GetString(1));
 					DateTime Start = rdr.GetDateTime(2);
 					DateTime End = rdr.GetDateTime(3);
 					
-					if(End != NULL){
-						R.Positions.Add(new Position {EmploymentLevel = Level, Start = this.Start, End = this.End});
+					if(End != null){
+						R.Positions.Add(new Position ( Level, Start, End ) );
 					}
                 }
             }
@@ -243,7 +245,7 @@ namespace Assignment_2
                 }
             }
 
-            return FullResearcher;
+            return R;
         }
 
 
@@ -252,17 +254,17 @@ namespace Assignment_2
         {
         	List<String> DOIList = new List<String>();	// List of Researcher's Publication DOIs
             List<Publication> BasicPublications = new List<Publication>();
-            
+
             int ID = R.ID;	// Researcher's ID
             String cDOI = ""; // The current DOI for searching
 
 			// Fetch all Researcher's Publication's DOI
 			try
             {
-            	MySqlConnection conn = GetConnection();
-				MySqlDataReader rdr = null;
+                MySqlConnection conn = GetConnection();
+			    MySqlDataReader rdr = null;
                 conn.Open();
-				
+
 				MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?ID", conn);
 				rdr = cmd.ExecuteReader();
 
@@ -303,10 +305,11 @@ namespace Assignment_2
 
 					while (rdr.Read())
 					{
-						BasicPublications.Add(new Publication { DOI = cDOI, Title = rdr.GetString(0), Year = rdr.GetInt32(1) });
+                        // Add more parameters 
+						BasicPublications.Add(new Publication ( cDOI, rdr.GetString(0), rdr.GetInt32(1) ) );
 					}
 					
-					DOIList.Remove(0);
+					DOIList.RemoveAt(0);
 				}
 			}
             catch (MySqlException e)
@@ -347,7 +350,7 @@ namespace Assignment_2
                 {
 					//Update Publication information
 					P.Authors = rdr.GetString(2);
-					P.Type = ParseEnum<Publication.OutputType>(rdr.GetString(4));
+					P.Type = ParseEnum<OutputType>(rdr.GetString(4));
 					P.Cite = rdr.GetString(5);		
 					P.DateAvailable = rdr.GetDateTime(6);
                 }
@@ -375,15 +378,18 @@ namespace Assignment_2
         // Has O(n^2). Future revisions can make it O(n) with PCount[-1*(From-Year)]
         public static int[] FetchPublicationCounts(int From, int To, Researcher R)
         {
-        	int[] PCount = new int[(To - From) + 1]; // int array with length equal to number of years (inclusive)
+        	int[] PCount = new int[ (To - From) + 1 ]; // int array with length equal to number of years (inclusive)
         	List<Publication> P = FetchBasicPublicationDetails(R); // List of all publications by researcher
         	
-    		for(int i=0; i<Pcount.Length; i++){
+    		for( int i = 0; i < PCount.Length; i++ ) 
+            {
     			PCount[i] = 0;	// Set default value
     		
-    			for(int j=0; j<P.Count; j++){
-    				if(P[j].Year == (To + i)){
-    					PCount++;
+    			for( int j = 0; j < P.Count; j++ )
+                {
+    				if( P[j].Year == ( To + i ) )
+                    {
+    					PCount[i]++;
     				}
     			}
     		}
