@@ -77,8 +77,8 @@ namespace Assignment_2
 				String Degree = rdr.GetString(9);		
 				int SupervisorID = rdr.GetString(10);	
 				Position.EmploymentLevel Level = ParseEnum<Position.EmploymentLevel>(rdr.GetString(11));
-				String UtasStart = rdr.GetDateTime(12);
-				String CurrentStart = rdr.GetDateTime(13);
+				DateTime UtasStart = rdr.GetDateTime(12);
+				DateTime CurrentStart = rdr.GetDateTime(13);
 				
 				Position CurrentPosition = new Position { EmploymentLevel = Level, Start = CurrentStart, End = NULL};
 				
