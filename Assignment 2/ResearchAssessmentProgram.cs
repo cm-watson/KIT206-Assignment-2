@@ -10,6 +10,8 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
+            ResearcherController ResearcherController = new ResearcherController();
+            List<Researcher> Researchers = ResearcherController.LoadResearchers();
         	Researcher R;
         	
         	Console.WriteLine("Test");
