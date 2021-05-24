@@ -91,7 +91,7 @@ namespace Assignment_2
         public DateTime CurrentJobStart => GetCurrentJob().Start;
 
         // Return the earliest job of the Researcher
-        public Position GetEarliestJob()
+        public Position EarliestJob()
         {
             Position EarliestJob = Positions[0]; // return value
 
@@ -100,7 +100,7 @@ namespace Assignment_2
                 Position Temp = Positions[i]; // temporary Position
                 
                 // If the temporary Position has an earlier starting date
-                if(DateTime.LessThan(Temp.Start, EarliestJob.Start))
+                if(DateTime.Compare(Temp.Start, EarliestJob.Start) < 0)
                 {
                     // Replace the earliest job with the temporary Position
                     EarliestJob = Temp;
@@ -112,18 +112,18 @@ namespace Assignment_2
         }
 
         // Return the start date of the Researcher's earliest job
-        public DateTime EarliestStart => GetEarliestJob().Start;
+        public DateTime EarliestStart => EarliestJob().Start;
 
         // Return the Researcher's tenure
         // Tenure is the time (in fractional years) since the Researcher commenced work
         public float Tenure() {
             // The date the Researchers commenced work
-            DateTime EarliestStart = GetEarliestStart();
+            DateTime Start = EarliestStart;
             // The current date and time
             DateTime CurrentDate = DateTime.Now;
 
             // The time in days, hours, and minutes since the Researcher commenced work
-            TimeSpan Difference = CurrentDate.Subtract(EarliestStart);
+            TimeSpan Difference = CurrentDate.Subtract(Start);
 
             // Return the time (in fractional years) since the Researcher commenced work
             return Difference.Days / (float)365.0;

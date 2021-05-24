@@ -71,24 +71,24 @@ namespace Assignment_2
 				String FamilyName = rdr.GetString(3);
 				String Title = rdr.GetString(4);
 				String Unit = rdr.GetString(5);
-				Researcher.Campus CurrentCampus = ParseEnum<Researcher.Campus>(rdr.GetString(6));
+				Campus CurrentCampus = ParseEnum<Campus>(rdr.GetString(6));
 				String Email = rdr.GetString(7);
 				String Photo = rdr.GetString(8);
 				String Degree = rdr.GetString(9);		
-				int SupervisorID = rdr.GetString(10);	
-				Position.EmploymentLevel Level = ParseEnum<Position.EmploymentLevel>(rdr.GetString(11));
+				int SupervisorID = rdr.GetInt32(10);	
+				EmploymentLevel Level = ParseEnum<EmploymentLevel>(rdr.GetString(11));
 				DateTime UtasStart = rdr.GetDateTime(12);
 				DateTime CurrentStart = rdr.GetDateTime(13);
 				
-				Position CurrentPosition = new Position { EmploymentLevel = Level, Start = CurrentStart, End = NULL};
+				Position CurrentPosition = new Position { Level, CurrentStart, DateTime.Now };
 				
 				Positions.Add(CurrentPosition);
 				
 				//Create new researcher 
-				Researcher FullResearcher = new Researcher { ID = this.ID, CurrentType = this.CurrentType, 
-					GivenName = this.GivenName, FamilyName = this.FamilyName, Title = this.Title, 
-					Unit = this.Unit, CurrentCampus = CurrentCampus, Email = this.Email, 
-					Photo = this.Photo, Degree = this.Degree, SupervisorID = this.SupervisorID, Positions = this.Positions
+				Researcher FullResearcher = new Researcher { ResearcherID, CurrentType, 
+					GivenName, FamilyName, Title, 
+					Unit, CurrentCampus, Email, 
+					Photo, Degree, SupervisorID, Positions
 				};
                
             }

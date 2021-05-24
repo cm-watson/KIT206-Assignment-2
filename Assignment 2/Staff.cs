@@ -29,26 +29,26 @@ namespace Assignment_2
             // The ThreeYearAverage of the Staff
             float TYA = ThreeYearAverage(Publications);
             // The EmploymentLevel of the Staff
-            Position.EmploymentLevel Level = GetCurrentJob().GetEmploymentLevel();
+            EmploymentLevel Level = GetCurrentJob().Level;
             // The expected number of Publications
             float ExpectedNumber = 0;
 
             // Determine the expected number of Publications based on the Staff's EmploymentLevel
             switch(Level)
             {
-                case A:
-                    ExpectedNumber = 0.5;
+                case EmploymentLevel.A:
+                    ExpectedNumber = 0.5F;
                     break;
-                case B:
+                case EmploymentLevel.B:
                     ExpectedNumber = 1;
                     break;
-                case C:
+                case EmploymentLevel.C:
                     ExpectedNumber = 2;
                     break;
-                case D:
-                    ExpectedNumber = 3.2;
+                case EmploymentLevel.D:
+                    ExpectedNumber = 3.2F;
                     break;
-                case E:
+                case EmploymentLevel.E:
                     ExpectedNumber = 4;
                     break;
                 default: 

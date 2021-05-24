@@ -50,7 +50,7 @@ namespace Assignment_2
                 if(!FirstName.Contains(Name) || !LastName.Contains(Name))
                 {
                     //... then remove them from the FilteredList
-                    FilteredList.Remove(i);
+                    FilteredList.RemoveAt(i);
                 }
 
             }
