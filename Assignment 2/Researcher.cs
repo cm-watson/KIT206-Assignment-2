@@ -39,17 +39,17 @@ namespace Assignment_2
         public List<Position> Positions { get; set; }
 
         // Researcher Constructor
-        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
+        public Researcher(int ID, Type RType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
             this.GivenName = GivenName;
             this.FamilyName = FamilyName;
             this.Title = Title;
-            this.School = School;
-            this.Campus = Campus;
+            this.Unit = School;
+            this.CurrentCampus = Campus;
             this.Email = Email;
             this.Photo = Photo;
-            this.Type = Type;
+            this.CurrentType = Type;
             this.Publications = Publications;
             this.Positions = Positions;
         }
@@ -62,7 +62,7 @@ namespace Assignment_2
 
             // Look through List until you find the Position with end date NULL
             // This means that the Position is the Researcher's current Position
-            while(Positions<i>.End != NULL)
+            while(Positions[i].End != NULL)
             {
                 Position = Positions.Get(i);
                 i++;
@@ -107,13 +107,13 @@ namespace Assignment_2
             // The date the Researchers commenced work
             DateTime EarliestStart = GetEarliestStart();
             // The current date and time
-            DateTime CurrentDate = DateTime.Now();
+            DateTime CurrentDate = DateTime.Now;
 
             // The time in days, hours, and minutes since the Researcher commenced work
             TimeSpan Difference = CurrentDate.Subtract(EarliestStart);
 
             // Return the time (in fractional years) since the Researcher commenced work
-            return Difference.Days / 365.0;
+            return Difference.Days / (float)365.0;
         }
 
         // Return the publication count of the Researcher
