@@ -202,7 +202,6 @@ namespace Assignment_2
         }
 
 
-
         //Fetch full Researcher Position history 
         public static Researcher FetchFullResearcherPositions(Researcher R)
         {
