@@ -14,7 +14,7 @@ namespace Assignment_2
         // The Researcher's private ID
         private int ID { get; set; }
 
-        // A string containing the type of researcher. Either 'Staff' or 'Student'.
+        // The type of researcher. Either 'Staff' or 'Student'.
         public Type CurrentType { get; set; }
 
         // The Researcher's first name
@@ -52,7 +52,7 @@ namespace Assignment_2
 
 
         // Researcher Constructor
-        public Researcher(int ID, Type RType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
+        public Researcher(int ID, Type ResearcherType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
             this.GivenName = GivenName;
@@ -62,7 +62,7 @@ namespace Assignment_2
             this.CurrentCampus = Campus;
             this.Email = Email;
             this.Photo = Photo;
-            this.CurrentType = RType;
+            this.CurrentType = ResearcherType;
             this.Publications = Publications;
             this.Positions = Positions;
         }
