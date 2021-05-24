@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Assignment_2
 {
 
-    public class ResearcherController:ERDAdapter
+    public class ResearcherController2:ERDAdapter
     {
         // Return a list of Researchers with basic details
         public List<Researcher> LoadResearchers => FetchBasicResearcherDetails();
