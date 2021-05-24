@@ -65,7 +65,6 @@
 	<Compile Include="ResearcherController.cs" />
     <Compile Include="Staff.cs" />
     <Compile Include="Student.cs" />
-	<Compile Include="Student.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
