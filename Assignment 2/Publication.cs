@@ -27,7 +27,7 @@ namespace Assignment_2
         public DateTime DateAvailable { get; set; }
 
         // Publication Constructor
-        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, int DateAvailable, int Age)
+        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, DateTime DateAvailable, int Age)
         {
             this.DOI = DOI;
             this.Title = Title;
@@ -41,7 +41,7 @@ namespace Assignment_2
         public int Age()
         {
             // The current date
-            DateTime CurrentDate = DateTime.Now();
+            DateTime CurrentDate = DateTime.Now;
 
             // The time since the Publication became available
             TimeSpan Difference = CurrentDate.Subtract(DateAvailable);
