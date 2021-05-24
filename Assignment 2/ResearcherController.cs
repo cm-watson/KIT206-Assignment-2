@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Assignment_2
 {
 
-    abstract class ResearcherController
+    abstract class ResearcherController:ERDAdapter
     {
         // Return a list of Researchers with basic details
         public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
