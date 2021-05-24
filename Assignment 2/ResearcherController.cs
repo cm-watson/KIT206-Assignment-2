@@ -22,7 +22,7 @@ namespace Assignment_2
             for (int i = 0; i < FilteredList.Count; i++)
             {
                 // If the Researcher doesn't have the correct EmploymentLevel...
-                if(FilteredList[i].Position.GetEmploymentLevel() != Level)
+                if(FilteredList[i].Positions[0].GetLevel() != Level)
                 {
                     //... then remove them from the FilteredList
                     FilteredList.Remove(i);

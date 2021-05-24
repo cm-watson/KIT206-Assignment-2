@@ -70,7 +70,7 @@ namespace Assignment_2
         // Return the current Position of the Researcher
         public Position GetCurrentJob()
         {
-           	Position P = new(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
+           	Position P = new Position(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
             int i = 0;  // incremental value
 
             // Look through List until you find the Position with end date NULL
