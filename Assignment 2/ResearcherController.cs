@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace Assignment_2
 {
 
-    abstract class ResearcherController
+    abstract class ResearcherController:ERDAdapter
     {
         // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
+        public List<Researcher> LoadResearchers => FetchBasicResearcherDetails();
 
         // Complete the details of a Researcher
-        public void LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
+        public void LoadResearcherDetails(Researcher Researcher) => CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
