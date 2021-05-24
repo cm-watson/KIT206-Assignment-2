@@ -25,8 +25,6 @@ namespace Assignment_2
         public string Cite { get; set; }
         // The year the Publication first became available
         public DateTime DateAvailable { get; set; }
-        // The time (in days elapsed) since the Publication became available
-        public int Age { get; set; }
 
         // Publication Constructor
         public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, int DateAvailable, int Age)
