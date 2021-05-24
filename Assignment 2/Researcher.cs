@@ -39,7 +39,7 @@ namespace Assignment_2
         public List<Position> Positions { get; set; }
 
         // Researcher Constructor
-        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, URL Photo, string Type, List<Publication> Publications, List<Position> Positions)
+        public Researcher(int ID, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
             this.GivenName = GivenName;
