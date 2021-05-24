@@ -64,7 +64,7 @@ namespace Assignment_2
             // This means that the Position is the Researcher's current Position
             while(Positions[i].End != NULL)
             {
-                Position = Positions.Get(i);
+                Position = Positions[i];
                 i++;
             }
     
@@ -80,11 +80,11 @@ namespace Assignment_2
         // Return the earliest job of the Researcher
         public Position GetEarliestJob()
         {
-            Position EarliestJob = Positions.Get(0); // return value
+            Position EarliestJob = Positions[0]; // return value
 
             for(int i=0; i<Positions.Count; i++)
             {
-                Position Temp = Positions.Get(i); // temporary Position
+                Position Temp = Positions[i]; // temporary Position
                 
                 // If the temporary Position has an earlier starting date
                 if(DateTime.LessThan(Temp.Start, EarliestJob.Start))
