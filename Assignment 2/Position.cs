@@ -34,19 +34,19 @@ namespace Assignment_2
         { 
             switch(l)
             {
-                case A:
+                case EmploymentLevel.A:
                     return "Postdoc";
                     break;
-                case B:
+                case EmploymentLevel.B:
                     return "Lecturer";
                     break;
-                case C:
+                case EmploymentLevel.C:
                     return "Senior Lecturer";
                     break;
-                case D:
+                case EmploymentLevel.D:
                     return "Associate Professor";
                     break;
-                case E:
+                case EmploymentLevel.E:
                     return "Professor";
                     break;
                 default:
