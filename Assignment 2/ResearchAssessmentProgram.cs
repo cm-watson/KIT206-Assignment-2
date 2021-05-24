@@ -10,7 +10,11 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
-        	Console.Write("Test");
+        	Researcher R;
+        	
+        	Console.WriteLine("Test");
+        	
+        	R = FetchFullResearcherDetails(123465);
         }  
     }
 }
