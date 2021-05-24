@@ -12,7 +12,7 @@ namespace Assignment_2
     public class Researcher
     {
         // The Researcher's private ID
-        private int ID { get; set; }
+        public int ID { get; set; }
 
         // The type of researcher. Either 'Staff' or 'Student'.
         public Type CurrentType { get; set; }
