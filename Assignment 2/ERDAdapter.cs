@@ -80,16 +80,16 @@ namespace Assignment_2
 				DateTime UtasStart = rdr.GetDateTime(12);
 				DateTime CurrentStart = rdr.GetDateTime(13);
 				
-				Position CurrentPosition = new Position { Level, CurrentStart, DateTime.Now };
+				Position CurrentPosition = new Position ( Level, CurrentStart, DateTime.Now );
 				
 				Positions.Add(CurrentPosition);
 				
 				//Create new researcher 
-				Researcher FullResearcher = new Researcher { ResearcherID, CurrentType, 
+				Researcher FullResearcher = new Researcher ( ResearcherID, CurrentType, 
 					GivenName, FamilyName, Title, 
 					Unit, CurrentCampus, Email, 
 					Photo, Degree, SupervisorID, Positions
-				};
+				);
                
             }
             catch (MySqlException e)
