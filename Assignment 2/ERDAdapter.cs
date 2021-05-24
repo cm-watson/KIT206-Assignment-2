@@ -60,9 +60,7 @@ namespace Assignment_2
                 conn.Open();
 
 				// Or could use select *
-                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, 
-                	title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, 
-                	current_start from researcher where id=?ResearcherID", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start from researcher where id=?ResearcherID", conn);
                 rdr = cmd.ExecuteReader();
 
 				//Researcher information
