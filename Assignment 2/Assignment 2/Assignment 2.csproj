@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Author.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Publication.cs" />
     <Compile Include="Researcher.cs" />
