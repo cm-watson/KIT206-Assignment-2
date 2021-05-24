@@ -14,7 +14,6 @@ namespace Assignment_2
             List<Researcher> Researchers = ResearcherController.LoadResearchers();
         	Researcher R;
 
-            Console.WriteLine();
         	Console.WriteLine("Testicles");
         	
         	R = FetchFullResearcherDetails(123465);
