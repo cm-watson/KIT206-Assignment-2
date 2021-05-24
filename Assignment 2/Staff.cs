@@ -27,7 +27,7 @@ namespace Assignment_2
         public float Performance(List<Publication> Publications)
         {
             // The ThreeYearAverage of the Staff
-            float ThreeYearAverage = ThreeYearAverage(Publications);
+            float TYA = ThreeYearAverage(Publications);
             // The EmploymentLevel of the Staff
             Position.EmploymentLevel Level = GetCurrentJob().GetEmploymentLevel();
             // The expected number of Publications
@@ -57,7 +57,7 @@ namespace Assignment_2
             }
 
             // Return the Performance of the Staff
-            return (ThreeYearAverage / ExpectedNumber);
+            return (TYA / ExpectedNumber);
 
         }
    

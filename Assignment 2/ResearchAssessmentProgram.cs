@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    class ResearchAssessmentProgram
+    public class ResearchAssessmentProgram
     {
         static void Main(string[] args)
         {
-            List<Researcher> Researchers = ResearcherController.LoadResearchers();
+            ResearcherController RController = new ResearcherController();
+            List<Researcher> Researchers = RController.LoadResearchers;
         	Researcher R;
 
         	Console.WriteLine("Testicles");
         	
-        	R = FetchFullResearcherDetails(123465);
+        	R = ERDAdapter.FetchFullResearcherDetails(123465);
         }  
     }
 }

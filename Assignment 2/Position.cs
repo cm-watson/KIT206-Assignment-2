@@ -30,28 +30,22 @@ namespace Assignment_2
         }
         
         // Return the JobTitle (Postdoc, Lecturer, Prof, etc) of the Position
-        public string GetJobTitle(EmploymentLevel l)
+        public string GetJobTitle(EmploymentLevel Level)
         { 
-            switch(l)
+            switch(Level)
             {
                 case EmploymentLevel.A:
                     return "Postdoc";
-                    break;
                 case EmploymentLevel.B:
                     return "Lecturer";
-                    break;
                 case EmploymentLevel.C:
                     return "Senior Lecturer";
-                    break;
                 case EmploymentLevel.D:
                     return "Associate Professor";
-                    break;
                 case EmploymentLevel.E:
                     return "Professor";
-                    break;
                 default:
                     return "No Title";
-                    break;
             }
         }
     }
