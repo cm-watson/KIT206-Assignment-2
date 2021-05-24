@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace Assignment_2
 {
 
-    public class ResearcherController:ERDAdapter
+    public class ResearcherController
     {
         // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers => FetchBasicResearcherDetails();
+        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
         // Complete the details of a Researcher
-        public void LoadResearcherDetails(Researcher Researcher) => CompleteResearcherDetails(Researcher);
+        public void LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
@@ -22,7 +22,7 @@ namespace Assignment_2
             for (int i = 0; i < FilteredList.Count; i++)
             {
                 // If the Researcher doesn't have the correct EmploymentLevel...
-                if(FilteredList.Get(i).GetEmploymentLevel() != Level)
+                if(FilteredList[i].Position.GetEmploymentLevel() != Level)
                 {
                     //... then remove them from the FilteredList
                     FilteredList.Remove(i);
@@ -43,8 +43,8 @@ namespace Assignment_2
             // Remove all Researchers that don't have the correct Name
             for (int i = 0; i < FilteredList.Count; i++ )
             {
-                string FirstName = FilteredList.Get(i).GivenName;
-                string LastName = FilteredList.Get(i).FamilyName;
+                string FirstName = FilteredList[i].GivenName;
+                string LastName = FilteredList[i].FamilyName;
 
                 // If the Researcher doesn't have the correct Name...
                 if(!FirstName.Contains(Name) || !LastName.Contains(Name))

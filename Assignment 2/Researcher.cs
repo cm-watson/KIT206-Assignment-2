@@ -75,7 +75,7 @@ namespace Assignment_2
 
             // Look through List until you find the Position with end date NULL
             // This means that the Position is the Researcher's current Position
-            while(Positions[i].End != NULL)
+            while(Positions[i].End != null)
             {
                 Position = Positions[i];
                 i++;
