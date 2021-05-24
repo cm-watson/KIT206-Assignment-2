@@ -13,30 +13,43 @@ namespace Assignment_2
     {
         // The Researcher's private ID
         private int ID { get; set; }
+
         // A string containing the type of researcher. Either 'Staff' or 'Student'.
         public Type CurrentType { get; set; }
+
         // The Researcher's first name
         public string GivenName { get; set; }
+
         // The Researcher's last name
         public string FamilyName { get; set; }
+
         // The Researcher's job title
         public string Title { get; set; }
+
         // The Researcher's school they work at
         public string Unit { get; set; }
+
         // The campus at which the Researcher works at
         public Campus CurrentCampus { get; set; }
+
         // The Researcher's email address
         public string Email { get; set; }
+
         // A link to a photo of the Researcher
         public string Photo { get; set; }
+
         // The Degree the Researcher is studying
         public string Degree { get; set; }
+
         // The Researcher's supervisor's ID
         public int SupervisorID { get; set; }
+
         // A list of the Researcher's Publications
-        public List<Publication> Publications;
+        public List<Publication> Publications { get; set; }
+
         // A list of the Researcher's Positions
         public List<Position> Positions { get; set; }
+
 
         // Researcher Constructor
         public Researcher(int ID, Type RType, string GivenName, string FamilyName, string Title, string School, Campus Campus, string Email, string Photo, string Type, List<Publication> Publications, List<Position> Positions)

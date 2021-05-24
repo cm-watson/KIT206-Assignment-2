@@ -17,7 +17,7 @@ namespace Assignment_2
         public Student(string Degree, int SupervisorID)
         {
             this.Degree = Degree;
-            this.SueprvisorID = SupervisorID;
+            this.SupervisorID = SupervisorID;
         }
     }
 }
