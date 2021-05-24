@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.24.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,15 +59,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-	<Compile Include="ERDAdapter.cs"/>
+    <Compile Include="ERDAdapter.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Publication.cs" />
-	<Compile Include="PublicationAdapter.cs" />
-	<Compile Include="PublicationController.cs" />
-	<Compile Include="ResearchAssessmentProgram.cs" />
+    <Compile Include="PublicationAdapter.cs" />
+    <Compile Include="PublicationController.cs" />
+    <Compile Include="ResearchAssessmentProgram.cs" />
     <Compile Include="Researcher.cs" />
-	<Compile Include="ResearcherAdapter.cs" />
-	<Compile Include="ResearcherController.cs" />
+    <Compile Include="ResearcherAdapter.cs" />
+    <Compile Include="ResearcherController.cs" />
     <Compile Include="Staff.cs" />
     <Compile Include="Student.cs" />
     <Page Include="MainWindow.xaml">
