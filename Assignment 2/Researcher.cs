@@ -8,6 +8,9 @@ namespace Assignment_2
 {
     // The campus at which the Researcher attends
     public enum Campus { Hobart, Launceston, CradleCoast };
+    
+    // The Type that a researcher is
+    public enum Type { Staff, Student };
 
     public class Researcher
     {
