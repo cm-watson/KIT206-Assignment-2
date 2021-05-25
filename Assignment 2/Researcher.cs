@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel; // For Description of enum
 
 namespace Assignment_2
 {
     // The campus at which the Researcher attends
-    public enum Campus { Hobart, Launceston, CradleCoast };
+    public enum Campus { Hobart, Launceston, [Description("Cradle Coast")] Cradle_Coast };
     
     // The Type that a researcher is
     public enum Type { Staff, Student };
@@ -123,7 +124,8 @@ namespace Assignment_2
 
         // Return the Researcher's tenure
         // Tenure is the time (in fractional years) since the Researcher commenced work
-        public float Tenure() {
+        public float Tenure() 
+        {
             // The date the Researchers commenced work
             DateTime Start = EarliestStart;
             // The current date and time
