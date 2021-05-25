@@ -9,7 +9,7 @@ namespace Assignment_2
 {
     // The campus at which the Researcher attends
     public enum Campus { Hobart, Launceston, [Description("Cradle Coast")] Cradle_Coast };
-    
+
     // The Type that a researcher is
     public enum Type { Staff, Student };
 
@@ -56,9 +56,9 @@ namespace Assignment_2
 
 
         // Researcher Constructor
-        public Researcher(int ID, Type ResearcherType, string GivenName, string FamilyName, 
-        	string Title, string Unit, Campus Campus, string Email, string Photo, 
-        	string Degree, int SupervisorID, List<Publication> Publications, List<Position> Positions)
+        public Researcher(int ID, Type ResearcherType, string GivenName, string FamilyName,
+            string Title, string Unit, Campus Campus, string Email, string Photo,
+            string Degree, int SupervisorID, List<Publication> Publications, List<Position> Positions)
         {
             this.ID = ID;
             this.CurrentType = ResearcherType;
@@ -78,12 +78,12 @@ namespace Assignment_2
         // Return the current Position of the Researcher
         public Position GetCurrentJob()
         {
-           	Position P = new Position(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
+        	Position P = new Position(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
             int i = 0;  // incremental value
 
             // Look through List until you find the Position with end date DateTime.MinValue
             // This means that the Position is the Researcher's current Position
-            while ( Positions[i].End != DateTime.MinValue )
+            while(Positions[i].End != DateTime.MinValue )
             {
                 P = Positions[i];
                 i++;
@@ -103,10 +103,10 @@ namespace Assignment_2
         {
             Position EarliestJob = Positions[0]; // return value
 
-            for(int i=0; i<Positions.Count; i++)
+            for(int i = 0; i < Positions.Count; i++)
             {
                 Position Temp = Positions[i]; // temporary Position
-                
+
                 // If the temporary Position has an earlier starting date
                 if(DateTime.Compare(Temp.Start, EarliestJob.Start) < 0)
                 {
@@ -124,7 +124,7 @@ namespace Assignment_2
 
         // Return the Researcher's tenure
         // Tenure is the time (in fractional years) since the Researcher commenced work
-        public float Tenure() 
+        public float Tenure()
         {
             // The date the Researchers commenced work
             DateTime Start = EarliestStart;
