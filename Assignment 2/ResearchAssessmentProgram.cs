@@ -45,7 +45,12 @@ namespace Assignment_2
 
             /* Testing methods */
 
-            // CONTROLLERS
+            // RESEARCHER CONTROLLER
+            List<Researcher> TestResearchers = TestResearcherController.LoadResearchers;
+            TestResearcherController.LoadResearcherDetails( TestResearcher );
+            List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestResearchers, EmploymentLevel.B );
+            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestResearchers, "Matthew" );
+
 
 
             System.Diagnostics.Debug.WriteLine( TestPositions[0].End );
