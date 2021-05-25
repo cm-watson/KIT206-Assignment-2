@@ -4,51 +4,58 @@ using System.Text;
 
 namespace Assignment_2
 {
-    public enum EmploymentLevel { A, B, C, D, E };
+    public enum EmploymentLevel { A, B, C, D, E , NULL};
 
     public class Position
     {
         // The Researcher's Position's EmploymentLevel
         public EmploymentLevel Level { get; set; }
-
         // The starting date of the Researcher's Position
         public DateTime Start { get; set; }
-
         // The end date of the Researcher's Position
         public DateTime End { get; set; }
 
         // Position Constructor
-        public Position(EmploymentLevel Level, DateTime Start, DateTime End) 
+        public Position(EmploymentLevel Level, DateTime Start, DateTime End)
         {
             this.Level = Level;
             this.Start = Start;
             this.End = End;
         }
-        
+
         // Return the EmploymentLevel (Student, A, B, etc) of the Position
         public string GetLevel()
-        { 
+        {
             return "" + Level;
         }
-        
+
         // Return the JobTitle (Postdoc, Lecturer, Prof, etc) of the Position
         public string GetJobTitle(EmploymentLevel Level)
-        { 
-            switch(Level)
+        {
+            string Title;
+            switch (Level)
             {
                 case EmploymentLevel.A:
-                    return "Postdoc";
+                    Title = "Postdoc";
+                    break;
                 case EmploymentLevel.B:
-                    return "Lecturer";
+                    Title = "Lecturer";
+                    break;
                 case EmploymentLevel.C:
-                    return "Senior Lecturer";
+                    Title = "Senior Lecturer";
+                    break;
                 case EmploymentLevel.D:
-                    return "Associate Professor";
+                    Title = "Associate Professor";
+                    break;
                 case EmploymentLevel.E:
-                    return "Professor";
+                    Title = "Professor";
+                    break;
                 default:
-                    return "No Title";
+                    Title = "No Title";
+                    break;
             }
+
+            return Title;
         }
     }
 }
