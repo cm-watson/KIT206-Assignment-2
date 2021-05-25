@@ -10,26 +10,45 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
+            /* TEST OBJECTS */
+
             // CONTROLLERS
-            ResearcherController RController = new ResearcherController();
-            PublicationController PController = new PublicationController();
+            ResearcherController TestResearcherController = new ResearcherController();
+            PublicationController TestPublicationController = new PublicationController();
 
-            // Test Researcher
-            List<Position> Positions = new List<Position>();
-            Positions.Add( new Position( EmploymentLevel.A, DateTime.Now, DateTime.MinValue ) );
+            // POSITION
+            Position TestPosition = new Position( EmploymentLevel.A, DateTime.Now, DateTime.MinValue );
 
-            System.Diagnostics.Debug.WriteLine( Positions[0].End );
+            // POSITIONS
+            List<Position> TestPositions = new List<Position>();
+            TestPositions.Add( TestPosition );
 
+            // PUBLICATION
+            Publication TestPublication = new Publication( "10.1007/11504894_31", "Funny Llama Puns",
+                "Matthew McKeown", 2021, "McKeown, M, 'Funny Llama Puns' ", DateTime.Now);
+
+            // PUBLICATIONS
+            List<Publication> TestPublications = new List<Publication>();
+            TestPublications.Add( TestPublication );
+
+            // RESEARCHER
             Researcher TestResearcher = new Researcher(000001, Type.Student, "Matthew", "McKeown",
                 "Dr", "Digital Fabrication", Campus.Hobart, "matthewisawzome@gmail.com",
-                "https://matthew.com.au/", "PhD", 123465, null, Positions);
+                "https://matthew.com.au/", "PhD", 123465, TestPublications, TestPositions);
 
-            Position CurrentJob = TestResearcher.GetCurrentJob();
-            EmploymentLevel Level = CurrentJob.Level;
-            string Title = CurrentJob.GetJobTitle( Level );
+            // STAFF
+            Staff TestStaff = new Staff( 0412810317, "Ya Mum's", "Academic" );
+            
+            // STUDENT
+            Student TestStudent = new Student( TestResearcher.Degree, TestResearcher.SupervisorID );
 
-            System.Diagnostics.Debug.WriteLine( Level );
-            System.Diagnostics.Debug.WriteLine( Title );
+
+            /* Testing methods */
+
+            // CONTROLLERS
+
+
+            System.Diagnostics.Debug.WriteLine( TestPositions[0].End );
 
             /*
             Console.WriteLine("Test");

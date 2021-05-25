@@ -18,7 +18,7 @@ namespace Assignment_2
         public string Category { get; set; }
 
         // Staff Constructor
-        public Staff(int PhoneNumber, string Room, string Category) : base(0, Type.Student, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null)
+        public Staff(int PhoneNumber, string Room, string Category) : base(0, Type.Staff, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null)
         {
             this.PhoneNumber = PhoneNumber;
             this.Room = Room;
