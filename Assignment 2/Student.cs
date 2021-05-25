@@ -14,7 +14,7 @@ namespace Assignment_2
         public int SupervisorID { get; set; }
 
         // Student Constructor
-        public Student(string Degree, int SupervisorID) : base(0, Student, "", "", "", "", Hobart, "", "", "", 0, null, null)
+        public Student(string Degree, int SupervisorID) : base(0, Type.Student, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null)
         {
             this.Degree = Degree;
             this.SupervisorID = SupervisorID;

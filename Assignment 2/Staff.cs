@@ -17,6 +17,14 @@ namespace Assignment_2
         // The Staff's category
         public string Category { get; set; }
 
+        // Staff Constructor
+        public Staff(int PhoneNumber, string Room, string Category) : base(0, Type.Student, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null)
+        {
+            this.PhoneNumber = PhoneNumber;
+            this.Room = Room;
+            this.Category = Category;
+        }
+
         // The total number of publications in the last three years / 3
         public float ThreeYearAverage(List<Publication> Publications)
         {
