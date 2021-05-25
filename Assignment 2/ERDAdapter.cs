@@ -257,12 +257,13 @@ namespace Assignment_2
 
             int ID = R.ID;	// Researcher's ID
             String cDOI = ""; // The current DOI for searching
+            
+            MySqlConnection conn = GetConnection();
+			MySqlDataReader rdr = null;
 
 			// Fetch all Researcher's Publication's DOI
 			try
             {
-                MySqlConnection conn = GetConnection();
-			    MySqlDataReader rdr = null;
                 conn.Open();
 
 				MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?ID", conn);
@@ -292,8 +293,8 @@ namespace Assignment_2
 			
             try
             {
-				MySqlConnection conn = GetConnection();
-				MySqlDataReader rdr = null;
+				conn = GetConnection();
+				rdr = null;
                 conn.Open();
 				
 				while (DOIList.Count != 0) {
