@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// This is a comment
 namespace Assignment_2
 {
     // The type of publication the Publication is
