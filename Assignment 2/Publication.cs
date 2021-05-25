@@ -13,24 +13,31 @@ namespace Assignment_2
     {
         // A digital object identifier for the Publication
         public string DOI { get; set; }
+        
         // The title of the Publication
         public string Title { get; set; }
+        
         // A list of author names that contributed to the Publication
         public String Authors { get; set; }
+        
         // The year the Publication was published
         public int Year { get; set; }
+        
         // The type of publication the Publication is
         public OutputType Type { get; set; }
+        
         // A string containing what the Publication should be cited as
         public string Cite { get; set; }
+        
         // The year the Publication first became available
         public DateTime DateAvailable { get; set; }
 
         // Publication Constructor
-        public Publication(string DOI, string Title, List<Researcher> Authors, int Year, string Cite, DateTime DateAvailable)
+        public Publication(string DOI, string Title, String Authors, int Year, string Cite, DateTime DateAvailable)
         {
             this.DOI = DOI;
             this.Title = Title;
+            this.Authors = Authors;
             this.Year = Year;
             this.Cite = Cite;
             this.DateAvailable = DateAvailable;

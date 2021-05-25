@@ -124,17 +124,27 @@ namespace Assignment_2
             {
                 conn.Open();
 				
-                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, level, photo from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, type, given_name, family_name, title, level, photo, current_start from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    // Missing EMAIL
-                    BasicResearchers.Add(new Researcher ( rdr.GetInt32(0), 
-                    	ParseEnum<Type>(rdr.GetString(1)), rdr.GetString(2), 
-                    	rdr.GetString(3), rdr.GetString(4),
-                    	new List<Position>() { new Position ( ParseEnum<EmploymentLevel>(rdr.GetString(5)), DateTime.Now, DateTime.Now ) },
-                    	rdr.GetString(6)
+                    BasicResearchers.Add(new Researcher ( 
+                    	rdr.GetInt32(0),                    // ID
+                        ParseEnum<Type>(rdr.GetString(1)),  // ResearcherType
+                        rdr.GetString(2),                   // GivenName
+                        rdr.GetString(3),                   // FamilyName
+                        rdr.GetString(4),                   // Title
+                        "",                                 // Unit
+                        Campus.Hobart,                      // Campus
+                        "",                                 // Email
+                        rdr.GetString(6),                   // Photo
+                        "",                                 // Degree
+                        0,                                  // Superviser ID
+                        new List<Publication>(), 			// Publications
+                        new List<Position> { 				// Positions
+                        	new Position(ParseEnum<EmploymentLevel>(rdr.GetString(5)), rdr.GetDateTime(7), DateTime.MinValue) 
+                        }
                     ));
                 }
             }
@@ -290,7 +300,7 @@ namespace Assignment_2
                 }
             }
 			
-			
+			// Fetch basic Publication details
             try
             {
 				conn = GetConnection();
@@ -306,8 +316,14 @@ namespace Assignment_2
 
 					while (rdr.Read())
 					{
-                        // Add more parameters 
-						BasicPublications.Add(new Publication ( cDOI, rdr.GetString(0), rdr.GetInt32(1) ) );
+						BasicPublications.Add(new Publication(
+                            cDOI,               // DOI
+                            rdr.GetString(0),   // Title
+                            "",                 // Authors
+                            rdr.GetInt32(1),    // Year
+                            "",                 // Cite
+                            DateTime.MinValue   // DateAvailable
+                        ));
 					}
 					
 					DOIList.RemoveAt(0);
