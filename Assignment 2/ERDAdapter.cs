@@ -140,7 +140,7 @@ namespace Assignment_2
                         "",                                 // Email
                         rdr.GetString(6),                   // Photo
                         "",                                 // Degree
-                        0,                                  // Superviser ID
+                        0,                                  // Supervisor ID
                         new List<Publication>(), 			// Publications
                         new List<Position> { 				// Positions
                         	new Position(ParseEnum<EmploymentLevel>(rdr.GetString(5)), rdr.GetDateTime(7), DateTime.MinValue) 
