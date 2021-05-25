@@ -10,7 +10,7 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
-            /* TEST OBJECTS */
+            /* MATTHEW'S TEST OBJECTS */
 
             // CONTROLLERS
             ResearcherController TestResearcherController = new ResearcherController();
@@ -54,15 +54,25 @@ namespace Assignment_2
 
 
             System.Diagnostics.Debug.WriteLine( TestPositions[0].End );
+            
+            
+            
 
-            /*
-            Console.WriteLine("Test");
-
-            List<Researcher> Researchers = RController.LoadResearchers;
-        	Researcher R;
+            /* Xavier's Test Code */
         	
-        	R = ERDAdapter.FetchFullResearcherDetails(123465);
-            */
+        	List<Researcher> BasicResearchers = ERDAdapter.FetchBasicResearcherDetails();
+
+            int Count = 1;
+
+            foreach (Researcher R in BasicResearchers)
+            {
+                Console.WriteLine( Count + ". " + R.ID + " " + R.CurrentType + " \t" + R.GivenName + " " + R.FamilyName
+                + " \t" + R.Title + " \t" + R.Unit + " \t" + R.CurrentCampus + " \t" + R.Email
+                + " \t" + R.Photo + " \t" + R.Degree + " \t" + R.SupervisorID + " \t" + R.Positions[0].GetLevel() );
+
+                Count++;
+            }
+            
         }  
     }
 }
