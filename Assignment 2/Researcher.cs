@@ -80,9 +80,9 @@ namespace Assignment_2
            	Position P = new Position(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
             int i = 0;  // incremental value
 
-            // Look through List until you find the Position with end date NULL
+            // Look through List until you find the Position with end date DateTime.MinValue
             // This means that the Position is the Researcher's current Position
-            while (Positions[i].End != null)
+            while ( Positions[i].End != DateTime.MinValue )
             {
                 P = Positions[i];
                 i++;
