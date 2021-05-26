@@ -78,18 +78,7 @@ namespace Assignment_2
         // Return the current Position of the Researcher
         public Position GetCurrentJob()
         {
-        	Position P = new Position(EmploymentLevel.A, DateTime.Now, DateTime.Now);  // placeholder Position
-            int i = 0;  // incremental value
-
-            // Look through List until you find the Position with end date DateTime.MinValue
-            // This means that the Position is the Researcher's current Position
-            while(Positions[i].End != DateTime.MinValue )
-            {
-                P = Positions[i];
-                i++;
-            }
-
-            return P;
+        	return Positions[0];
         }
 
         // Return the current job title of the Researcher
@@ -141,9 +130,8 @@ namespace Assignment_2
         // Return the publication count of the Researcher
         public int PublicationsCount()
         {
-            // The number of publications is the length of the Publiations array
-            int PublicationCount = Publications.Count;
-            return PublicationCount;
+            // Return the number of publications is the length of the Publiations array
+            return Publications.Count;
         }
     }
 }

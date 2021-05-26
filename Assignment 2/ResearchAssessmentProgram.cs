@@ -10,7 +10,7 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
-            /* MATTHEW'S TEST OBJECTS */
+            /* TEST OBJECTS */
 
             // CONTROLLERS
             ResearcherController TestResearcherController = new ResearcherController();
@@ -23,24 +23,14 @@ namespace Assignment_2
             // POSITIONS
             List<Position> TestPositions = new List<Position>();
 
-            // PUBLICATION
-            Publication TestPublication = new Publication( "10.1007/11504894_31", "Funny Llama Puns",
-                "Matthew McKeown", 2021, "McKeown, M, 'Funny Llama Puns' ", DateTime.Now);
-
             // PUBLICATIONS
             List<Publication> TestPublications = new List<Publication>();
-            TestPublications.Add( TestPublication );
-
-            // RESEARCHER
-            Researcher TestResearcher = new Researcher(000001, Type.Student, "Matthew", "McKeown",
-                "Dr", "Digital Fabrication", Campus.Hobart, "matthewisawzome@gmail.com",
-                "https://matthew.com.au/", "PhD", 123465, TestPublications, TestPositions);
 
             // STAFF
-            Staff TestStaff = new Staff( 0412810317, "Ya Mum's", "Academic" );
+            List<Researcher> TestStaff = new List<Researcher>();
             
-            // STUDENT
-            Student TestStudent = new Student( TestResearcher.Degree, TestResearcher.SupervisorID );
+            // STUDENTS
+            List<Researcher> TestStudents = new List<Researcher>();
 
 
             /* Testing methods */
@@ -85,13 +75,51 @@ namespace Assignment_2
 
             foreach ( Researcher R in TestBasicResearchers )
             {
-                TestPositions.Add( R.GetCurrentJob() );
+                TestPositions.Add( R.Positions[0] );
             }
 
             foreach ( Position P in TestPositions )
             {
-                System.Diagnostics.Debug.WriteLine( "Level: " + P.GetLevel() + ", Title: " + P.GetJobTitle(P.Level) );
-            }            
+                //System.Diagnostics.Debug.WriteLine( "Level: " + P.GetLevel() + ", Title: " + P.GetJobTitle(P.Level) );
+            }  
+            
+
+            // PUBLICATION
+
+
+            // RESEARCHER
+
+            foreach ( Researcher R in TestBasicResearchers )
+            {
+                //System.Diagnostics.Debug.WriteLine( R.GetCurrentJob().Level );
+                //System.Diagnostics.Debug.WriteLine( R.CurrentJobTitle );
+                //System.Diagnostics.Debug.WriteLine( R.CurrentJobStart );
+                //System.Diagnostics.Debug.WriteLine( R.EarliestStart );
+                //System.Diagnostics.Debug.WriteLine( R.Tenure() );
+                //System.Diagnostics.Debug.WriteLine( R.PublicationsCount() );
+            }
+
+            // STAFF
+
+            foreach ( Researcher R in TestBasicResearchers )
+            {
+                if( R.CurrentType == Type.Staff )
+                {
+                    TestStaff.Add( R );
+                }
+
+            }
+
+            foreach ( Researcher R in TestStaff )
+            {
+                //System.Diagnostics.Debug.WriteLine( R.ThreeYearAverage( R.Publications ) );
+            }
+
+            foreach ( Researcher R in TestStaff )
+            {
+                //System.Diagnostics.Debug.WriteLine( R.Performance( R.Publications ) );
+            }
+
 
             /* Xavier's Test Code */
 
