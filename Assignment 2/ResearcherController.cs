@@ -38,19 +38,19 @@ namespace Assignment_2
         public List<Researcher> FilterByName(List<Researcher> Researchers, string Name)
         {
             // The filtered by name list
-            List<Researcher> FilteredList = Researchers;
+            List<Researcher> FilteredList = new List<Researcher>();
 
             // Remove all Researchers that don't have the correct Name
-            for (int i = 0; i < FilteredList.Count; i++ )
+            for (int i = 0; i < Researchers.Count; i++ )
             {
-                string FirstName = FilteredList[i].GivenName;
-                string LastName = FilteredList[i].FamilyName;
+                string FirstName = Researchers[i].GivenName;
+                string LastName = Researchers[i].FamilyName;
 
                 // If the Researcher doesn't have the correct Name...
-                if(!FirstName.Contains(Name) || !LastName.Contains(Name))
+                if(FirstName.IndexOf( Name, 0, Name.Length ) != 0 || LastName.IndexOf( Name, 0, Name.Length ) != 0 )
                 {
                     //... then remove them from the FilteredList
-                    FilteredList.RemoveAt(i);
+                    FilteredList.Add( Researchers[i] );
                 }
 
             }

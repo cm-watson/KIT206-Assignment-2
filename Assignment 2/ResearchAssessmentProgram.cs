@@ -64,17 +64,14 @@ namespace Assignment_2
             List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestBasicResearchers, EmploymentLevel.B );
             foreach ( Researcher R in FilteredByLevel )
             {
-                PrintBasicResearcher( R );
+                //PrintBasicResearcher( R );
             }
-            System.Diagnostics.Debug.WriteLine( "TestBasicResearchers" );
-            foreach ( Researcher R in TestBasicResearchers )
+
+            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "an" );
+            foreach ( Researcher R in FilteredByName )
             {
                 PrintBasicResearcher( R );
             }
-
-
-            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "Matthew" );
-
 
 
             System.Diagnostics.Debug.WriteLine( TestPositions[0].End );
