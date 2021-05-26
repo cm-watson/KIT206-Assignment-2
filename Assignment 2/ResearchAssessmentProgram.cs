@@ -64,12 +64,22 @@ namespace Assignment_2
 
             // PUBLICATION CONTROLLER
 
-            List<Publication> TestLoadPublications = TestPublicationController.LoadPublicationsFor( TestBasicResearchers[0] );
+            List<Publication> TestLoadPublications = TestPublicationController.LoadBasicPublicationsFor( TestBasicResearchers[0] );
             foreach ( Publication P in TestLoadPublications )
             {
-                System.Diagnostics.Debug.WriteLine( P.Title );
+                //System.Diagnostics.Debug.WriteLine( P.Title );
             }
 
+            List<Publication> TestLoadCompletePublications = new List<Publication>();
+            foreach ( Publication P in TestLoadPublications )
+            {
+                TestLoadCompletePublications.Add( TestPublicationController.LoadCompletePublicationDetails( P ) );
+            }
+
+            foreach ( Publication P in TestLoadCompletePublications )
+            {
+                //System.Diagnostics.Debug.WriteLine( P.DOI + ", " + P.Title + ", " + P.Authors + ", " + P.Year + ", " + P.Cite + ", " + P.DateAvailable );
+            }
 
             // POSITION
 
@@ -88,7 +98,7 @@ namespace Assignment_2
 
             foreach ( Publication P in TestLoadPublications )
             {
-                System.Diagnostics.Debug.WriteLine( P.DateAvailable + ", " + P.Age() );
+                //System.Diagnostics.Debug.WriteLine( Publication.DateAvailable + ", " + Publication.Age() );
             }
 
             // RESEARCHER
