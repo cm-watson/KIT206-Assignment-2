@@ -64,10 +64,10 @@ namespace Assignment_2
 
             // PUBLICATION CONTROLLER
 
-            List<Publication> TestLoadPublications = TestPublicationController.LoadPublicationsFor(TestBasicResearchers[0]);
+            List<Publication> TestLoadPublications = TestPublicationController.LoadPublicationsFor( TestBasicResearchers[0] );
             foreach ( Publication P in TestLoadPublications )
             {
-                //System.Diagnostics.Debug.WriteLine( P.Title );
+                System.Diagnostics.Debug.WriteLine( P.Title );
             }
 
 
@@ -86,6 +86,10 @@ namespace Assignment_2
 
             // PUBLICATION
 
+            foreach ( Publication P in TestLoadPublications )
+            {
+                System.Diagnostics.Debug.WriteLine( P.DateAvailable + ", " + P.Age() );
+            }
 
             // RESEARCHER
 

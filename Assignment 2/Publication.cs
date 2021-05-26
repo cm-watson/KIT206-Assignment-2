@@ -43,7 +43,7 @@ namespace Assignment_2
             this.DateAvailable = DateAvailable;
         }
 
-        // Returns the Age of the Publication
+        // Returns the Age of the Publication (days since publication became available)
         public int Age()
         {
             // The current date
