@@ -88,7 +88,7 @@ namespace Assignment_2
                     DateTime UtasStart = rdr.GetDateTime(12);
                     DateTime CurrentStart = rdr.GetDateTime(13);
 
-                    Position CurrentPosition = new Position(Level, CurrentStart, DateTime.Now);
+                    Position CurrentPosition = new Position(Level, CurrentStart, DateTime.MinValue);
 
                     Positions.Add(CurrentPosition);
 
