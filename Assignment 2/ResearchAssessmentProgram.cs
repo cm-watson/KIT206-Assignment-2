@@ -48,11 +48,9 @@ namespace Assignment_2
             // RESEARCHER CONTROLLER
 
             List<Researcher> TestBasicResearchers = TestResearcherController.LoadResearchers;
-            int LoadResearcherCount = 1;
             foreach ( Researcher R in TestBasicResearchers )
             {
-                PrintBasicResearcher( R );
-                LoadResearcherCount++;
+                //PrintBasicResearcher( R );
             }
 
             List<Researcher> TestDetailsResearchers = new List<Researcher>();
@@ -60,10 +58,16 @@ namespace Assignment_2
             TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[ TestBasicResearchers.Count - 1 ] ) );
             foreach ( Researcher R in TestDetailsResearchers )
             {
-                PrintDetailsResearcher( R );
+                //PrintDetailsResearcher( R );
             }
 
             List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestBasicResearchers, EmploymentLevel.B );
+            foreach ( Researcher R in FilteredByLevel )
+            {
+                PrintBasicResearcher( R );
+            }
+
+
             List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "Matthew" );
 
 

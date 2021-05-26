@@ -25,7 +25,7 @@ namespace Assignment_2
                 if(FilteredList[i].Positions[0].Level != Level)
                 {
                     //... then remove them from the FilteredList
-                    FilteredList.RemoveAt(i);
+                    FilteredList.Remove(FilteredList[i]);
                 }
             }
 
