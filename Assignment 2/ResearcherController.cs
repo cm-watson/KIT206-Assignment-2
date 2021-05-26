@@ -47,7 +47,7 @@ namespace Assignment_2
                 string LastName = Researchers[i].FamilyName;
 
                 // If the Researcher doesn't have the correct Name...
-                if(FirstName.IndexOf( Name, 0, Name.Length ) != 0 || LastName.IndexOf( Name, 0, Name.Length ) != 0 )
+                if( FirstName.IndexOf( Name ) >= 0 || LastName.IndexOf( Name ) >= 0 )
                 {
                     //... then remove them from the FilteredList
                     FilteredList.Add( Researchers[i] );
