@@ -16,12 +16,12 @@ namespace Assignment_2
             ResearcherController TestResearcherController = new ResearcherController();
             PublicationController TestPublicationController = new PublicationController();
 
-            // POSITION
-            Position TestPosition = new Position( EmploymentLevel.A, DateTime.Now, DateTime.MinValue );
+            // RESEARCHERS
+            List<Researcher> TestBasicResearchers = new List<Researcher>();
+            List<Researcher> TestDetailsResearchers = new List<Researcher>();
 
             // POSITIONS
             List<Position> TestPositions = new List<Position>();
-            TestPositions.Add( TestPosition );
 
             // PUBLICATION
             Publication TestPublication = new Publication( "10.1007/11504894_31", "Funny Llama Puns",
@@ -47,13 +47,12 @@ namespace Assignment_2
 
             // RESEARCHER CONTROLLER
 
-            List<Researcher> TestBasicResearchers = TestResearcherController.LoadResearchers;
+            TestBasicResearchers = TestResearcherController.LoadResearchers;
             foreach ( Researcher R in TestBasicResearchers )
             {
                 //PrintBasicResearcher( R );
             }
 
-            List<Researcher> TestDetailsResearchers = new List<Researcher>();
             TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[0] ) );
             TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[ TestBasicResearchers.Count - 1 ] ) );
             foreach ( Researcher R in TestDetailsResearchers )
@@ -70,14 +69,29 @@ namespace Assignment_2
             List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "an" );
             foreach ( Researcher R in FilteredByName )
             {
-                PrintBasicResearcher( R );
+                //PrintBasicResearcher( R );
+            }
+
+            // PUBLICATION CONTROLLER
+
+            List<Publication> TestLoadPublications = TestPublicationController.LoadPublicationsFor(TestBasicResearchers[0]);
+            foreach ( Publication P in TestLoadPublications )
+            {
+                //System.Diagnostics.Debug.WriteLine( P.Title );
             }
 
 
-            System.Diagnostics.Debug.WriteLine( TestPositions[0].End );
-            
-            
-            
+            // POSITION
+
+            foreach ( Researcher R in TestBasicResearchers )
+            {
+                TestPositions.Add( R.GetCurrentJob() );
+            }
+
+            foreach ( Position P in TestPositions )
+            {
+                System.Diagnostics.Debug.WriteLine( "Level: " + P.GetLevel() + ", Title: " + P.GetJobTitle(P.Level) );
+            }            
 
             /* Xavier's Test Code */
 
