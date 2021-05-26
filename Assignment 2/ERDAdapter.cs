@@ -8,9 +8,9 @@ using System.Windows; //for generating a MessageBox upon encountering an error
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
-namespace Test
+namespace Assignment_2
 {
-    public abstract class Assignment_2
+    public abstract class ERDAdapter
     {
         //If including error reporting within this class (as this sample does) then you'll need a way
         //to control whether the errors are actually shown or silently ignored, since once you have
