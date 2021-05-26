@@ -10,7 +10,7 @@ namespace Assignment_2
         public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
         // Complete the details of a Researcher
-        public void LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
+        public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)

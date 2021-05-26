@@ -46,18 +46,25 @@ namespace Assignment_2
             /* Testing methods */
 
             // RESEARCHER CONTROLLER
-            List<Researcher> TestResearchers = TestResearcherController.LoadResearchers;
+
+            List<Researcher> TestBasicResearchers = TestResearcherController.LoadResearchers;
             int LoadResearcherCount = 1;
-            foreach( Researcher R in TestResearchers)
+            foreach ( Researcher R in TestBasicResearchers )
             {
-                System.Diagnostics.Debug.WriteLine( LoadResearcherCount + ". " + R.FamilyName + ", " + R.GivenName + ", (" + R.Title + ")" );
-                PrintResearcher( R, "\t" );
+                PrintBasicResearcher( R );
                 LoadResearcherCount++;
             }
 
-            TestResearcherController.LoadResearcherDetails( TestResearcher );
-            List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestResearchers, EmploymentLevel.B );
-            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestResearchers, "Matthew" );
+            List<Researcher> TestDetailsResearchers = new List<Researcher>();
+            TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[0] ) );
+            TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[ TestBasicResearchers.Count - 1 ] ) );
+            foreach ( Researcher R in TestDetailsResearchers )
+            {
+                PrintDetailsResearcher( R );
+            }
+
+            List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestBasicResearchers, EmploymentLevel.B );
+            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "Matthew" );
 
 
 
@@ -82,17 +89,16 @@ namespace Assignment_2
             
         }  
         
-        public static void PrintResearcher(Researcher R)
+        public static void PrintBasicResearcher(Researcher R)
         {
-            System.Diagnostics.Debug.WriteLine(R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
-            + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
-            + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel());
+            System.Diagnostics.Debug.WriteLine( R.FamilyName + ", " + R.GivenName + " (" + R.Title + ")" );
         }
 
-        public static void PrintResearcher(Researcher R, String Prefix)
+        public static void PrintDetailsResearcher(Researcher R)
         {
-            System.Diagnostics.Debug.Write(Prefix);
-            PrintResearcher(R);
+            System.Diagnostics.Debug.WriteLine( R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
+            + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
+            + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel() );
         }
     }
 }
