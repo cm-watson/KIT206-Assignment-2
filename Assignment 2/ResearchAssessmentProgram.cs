@@ -10,6 +10,9 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
+            MainWindow MainWindow = new MainWindow();
+
+
             /* TEST OBJECTS */
 
             // CONTROLLERS
