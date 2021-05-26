@@ -47,6 +47,14 @@ namespace Assignment_2
 
             // RESEARCHER CONTROLLER
             List<Researcher> TestResearchers = TestResearcherController.LoadResearchers;
+            int LoadResearcherCount = 1;
+            foreach( Researcher R in TestResearchers)
+            {
+                System.Diagnostics.Debug.WriteLine( LoadResearcherCount + ". " + R.FamilyName + ", " + R.GivenName + ", (" + R.Title + ")" );
+                PrintResearcher( R, "\t" );
+                LoadResearcherCount++;
+            }
+
             TestResearcherController.LoadResearcherDetails( TestResearcher );
             List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestResearchers, EmploymentLevel.B );
             List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestResearchers, "Matthew" );
@@ -59,41 +67,31 @@ namespace Assignment_2
             
 
             /* Xavier's Test Code */
-        	
-        	List<Researcher> BasicResearchers = ERDAdapter.FetchBasicResearcherDetails();
+
+            /*
             List<Researcher> Researchers = new List<Researcher>();
 
-            int Count = 1;
-
-            foreach (Researcher R in BasicResearchers)
-            {
-                Console.WriteLine(Count + ". " + R.FamilyName + ", " + R.GivenName + " (" + R.Title + ")");
-
-                PrintResearcher(R, "\t");
-
-                Count++;
-            }
-
-            Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[0]));
-            Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[BasicResearchers.Count - 1]));
+            //Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[0]));
+            //Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[BasicResearchers.Count - 1]));
             Researchers.Add(ERDAdapter.FetchFullResearcherDetails(123461));
 
             PrintResearcher(Researchers[0], "\n");
             PrintResearcher(Researchers[1], "\n");
             PrintResearcher(Researchers[2], "\n");
+            */
             
         }  
         
         public static void PrintResearcher(Researcher R)
         {
-            Console.WriteLine(R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
+            System.Diagnostics.Debug.WriteLine(R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
             + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
             + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel());
         }
 
         public static void PrintResearcher(Researcher R, String Prefix)
         {
-            Console.Write(Prefix);
+            System.Diagnostics.Debug.Write(Prefix);
             PrintResearcher(R);
         }
     }
