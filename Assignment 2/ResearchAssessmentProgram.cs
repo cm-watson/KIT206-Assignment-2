@@ -66,6 +66,11 @@ namespace Assignment_2
             {
                 PrintBasicResearcher( R );
             }
+            System.Diagnostics.Debug.WriteLine( "TestBasicResearchers" );
+            foreach ( Researcher R in TestBasicResearchers )
+            {
+                PrintBasicResearcher( R );
+            }
 
 
             List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "Matthew" );
