@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-
+        <Grid HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="426">
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="103,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+            <Label x:Name="label" Content="Filter by name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="103,76,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged"/>
+            
+            <Label x:Name="label1" Content="Show:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="720" Margin="426,0,0,0" VerticalAlignment="Top" Width="426"/>
+        <Grid HorizontalAlignment="Left" Height="720" Margin="852,0,0,0" VerticalAlignment="Top" Width="426"/>
     </Grid>
 </Window>

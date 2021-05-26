@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace Assignment_2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ResearcherDetailsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ResearcherDetailsView : UserControl
     {
-        public MainWindow()
+        public ResearcherDetailsView()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            String nice = "nice";
-        }
-
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
