@@ -61,18 +61,40 @@ namespace Assignment_2
             /* Xavier's Test Code */
         	
         	List<Researcher> BasicResearchers = ERDAdapter.FetchBasicResearcherDetails();
+            List<Researcher> Researchers = new List<Researcher>();
 
             int Count = 1;
 
             foreach (Researcher R in BasicResearchers)
             {
-                Console.WriteLine( Count + ". " + R.ID + " " + R.CurrentType + " \t" + R.GivenName + " " + R.FamilyName
-                + " \t" + R.Title + " \t" + R.Unit + " \t" + R.CurrentCampus + " \t" + R.Email
-                + " \t" + R.Photo + " \t" + R.Degree + " \t" + R.SupervisorID + " \t" + R.Positions[0].GetLevel() );
+                Console.WriteLine(Count + ". " + R.FamilyName + ", " + R.GivenName + " (" + R.Title + ")");
+
+                PrintResearcher(R, "\t");
 
                 Count++;
             }
+
+            Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[0]));
+            Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[BasicResearchers.Count - 1]));
+            Researchers.Add(ERDAdapter.FetchFullResearcherDetails(123461));
+
+            PrintResearcher(Researchers[0], "\n");
+            PrintResearcher(Researchers[1], "\n");
+            PrintResearcher(Researchers[2], "\n");
             
         }  
+        
+        public static void PrintResearcher(Researcher R)
+        {
+            Console.WriteLine(R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
+            + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
+            + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel());
+        }
+
+        public static void PrintResearcher(Researcher R, String Prefix)
+        {
+            Console.Write(Prefix);
+            PrintResearcher(R);
+        }
     }
 }
