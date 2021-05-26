@@ -46,7 +46,10 @@ namespace Assignment_2
             return conn;
         }
 
-        //Need to add multiple positions, publications, student supervised
+
+        /* Researcher related commands */
+
+        //Need to add publications, student supervised
         //Fetch full Researcher details from database
         public static Researcher FetchFullResearcherDetails(int ResearcherID)
         {
@@ -80,8 +83,8 @@ namespace Assignment_2
                     String Email = rdr.GetString(7);
                     String Photo = rdr.GetString(8);
                     String Degree = rdr.IsDBNull(9) ? "" : rdr.GetString(9);
-                    int SupervisorID = rdr.IsDBNull(9) ? -1 : rdr.GetInt32(10);
-                    EmploymentLevel Level = rdr.IsDBNull(9) ? EmploymentLevel.NULL : ParseEnum<EmploymentLevel>(rdr.GetString(11));
+                    int SupervisorID = rdr.IsDBNull(10) ? -1 : rdr.GetInt32(10);
+                    EmploymentLevel Level = rdr.IsDBNull(11) ? EmploymentLevel.NULL : ParseEnum<EmploymentLevel>(rdr.GetString(11));
                     DateTime UtasStart = rdr.GetDateTime(12);
                     DateTime CurrentStart = rdr.GetDateTime(13);
 
@@ -89,13 +92,11 @@ namespace Assignment_2
 
                     Positions.Add(CurrentPosition);
 
-                    ;
-
-                    //Create new researcher 
+                    // Create new researcher 
                     FullResearcher = new Researcher(ResearcherID, CurrentType,
                         GivenName, FamilyName, Title,
                         Unit, CurrentCampus, Email,
-                        Photo, Degree, SupervisorID, new List<Publication>(), new List<Position>()
+                        Photo, Degree, SupervisorID, new List<Publication>(), Positions
                     );
                 }
             }
@@ -114,6 +115,9 @@ namespace Assignment_2
                     conn.Close();
                 }
             }
+
+            // Add positions
+            FullResearcher = FetchFullResearcherPositions(FullResearcher);
 
             return FullResearcher;
         }
@@ -186,18 +190,18 @@ namespace Assignment_2
                 conn.Open();
 
                 // Or could use select *
-                MySqlCommand cmd = new MySqlCommand("select * from researcher where id=?ResearcherID", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from researcher where id=" + ResearcherID, conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    //Update Researcher information
+                    // Update Researcher information
                     BasicResearcher.Unit = rdr.GetString(5);
                     BasicResearcher.CurrentCampus = ParseEnum<Campus>(rdr.GetString(6));
                     BasicResearcher.Email = rdr.GetString(7);
                     BasicResearcher.Photo = rdr.GetString(8);
-                    BasicResearcher.Degree = rdr.GetString(9);
-                    BasicResearcher.SupervisorID = rdr.GetInt32(10);
+                    BasicResearcher.Degree = rdr.IsDBNull(9) ? "" : rdr.GetString(9);
+                    BasicResearcher.SupervisorID = rdr.IsDBNull(10) ? -1 : rdr.GetInt32(10);
                 }
             }
             catch (MySqlException e)
@@ -216,14 +220,18 @@ namespace Assignment_2
                 }
             }
 
+            // Add all researcher positions 
+            BasicResearcher = FetchFullResearcherPositions(BasicResearcher);
+
             return BasicResearcher;
         }
 
 
+        /* Position related commands */
+
         //Fetch full Researcher Position history 
         public static Researcher FetchFullResearcherPositions(Researcher R)
         {
-            int ID = R.ID; // Researcher's ID
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
 
@@ -231,17 +239,18 @@ namespace Assignment_2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from position where id=?ID", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from position where id=" + R.ID, conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    EmploymentLevel Level = ParseEnum<EmploymentLevel>(rdr.GetString(1));
-                    DateTime Start = rdr.GetDateTime(2);
-                    DateTime End = rdr.GetDateTime(3);
-
-                    if (End != null)
+                    // Add positions that aren't current
+                    if (!rdr.IsDBNull(3))
                     {
+                        EmploymentLevel Level = ParseEnum<EmploymentLevel>(rdr.GetString(1));
+                        DateTime Start = rdr.GetDateTime(2);
+                        DateTime End = rdr.GetDateTime(3);
+
                         R.Positions.Add(new Position(Level, Start, End));
                     }
                 }
@@ -265,6 +274,8 @@ namespace Assignment_2
             return R;
         }
 
+
+        /* Publication related commands */
 
         // Fetch basic details for all Publications by a Researcher
         public static List<Publication> FetchBasicPublicationDetails(Researcher R)
