@@ -120,21 +120,6 @@ namespace Assignment_2
                 //System.Diagnostics.Debug.WriteLine( R.Performance( R.Publications ) );
             }
 
-
-            /* Xavier's Test Code */
-
-            /*
-            List<Researcher> Researchers = new List<Researcher>();
-
-            //Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[0]));
-            //Researchers.Add(ERDAdapter.CompleteResearcherDetails(BasicResearchers[BasicResearchers.Count - 1]));
-            Researchers.Add(ERDAdapter.FetchFullResearcherDetails(123461));
-
-            PrintResearcher(Researchers[0], "\n");
-            PrintResearcher(Researchers[1], "\n");
-            PrintResearcher(Researchers[2], "\n");
-            */
-            
         }  
         
         public static void PrintBasicResearcher(Researcher R)
