@@ -16,17 +16,17 @@ namespace Assignment_2
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
         {
             // The filtered by level list
-            List<Researcher> FilteredList = Researchers;
+            List<Researcher> FilteredList = new List<Researcher>();
 
-            // Remove all Researchers that don't have the correct EmploymentLevel
-            for (int i = 0; i < FilteredList.Count; i++)
+            // Add all Researchers that have the correct EmploymentLevel
+            for (int i = 0; i < Researchers.Count; i++)
             {
-                // If the Researcher doesn't have the correct EmploymentLevel...
-                if(FilteredList[i].Positions[0].Level != Level)
+                // If the Researcher has the correct EmploymentLevel...
+                if (Researchers[i].Positions[0].Level == Level)
                 {
-                    //... then remove them from the FilteredList
-                    FilteredList.Remove(FilteredList[i]);
-                }
+                    //... then add them to the FilteredList
+                    FilteredList.Add(Researchers[i]);
+                } 
             }
 
             // Return the FilteredList of Researchers (by level)
