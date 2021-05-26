@@ -8,9 +8,9 @@ using System.Windows; //for generating a MessageBox upon encountering an error
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
-namespace Assignment_2
+namespace Test
 {
-    public abstract class ERDAdapter
+    public abstract class Assignment_2
     {
         //If including error reporting within this class (as this sample does) then you'll need a way
         //to control whether the errors are actually shown or silently ignored, since once you have
@@ -119,6 +119,9 @@ namespace Assignment_2
             // Add positions
             FullResearcher = FetchFullResearcherPositions(FullResearcher);
 
+            // Add publications
+            FullResearcher.Publications = FetchBasicPublicationDetails(FullResearcher);
+
             return FullResearcher;
         }
 
@@ -197,7 +200,7 @@ namespace Assignment_2
                 {
                     // Update Researcher information
                     BasicResearcher.Unit = rdr.GetString(5);
-                    BasicResearcher.CurrentCampus = ParseEnum<Campus>(rdr.GetString(6));
+                    BasicResearcher.CurrentCampus = ParseEnum<Campus>(rdr.GetString(6).Replace(" ", "_"));
                     BasicResearcher.Email = rdr.GetString(7);
                     BasicResearcher.Photo = rdr.GetString(8);
                     BasicResearcher.Degree = rdr.IsDBNull(9) ? "" : rdr.GetString(9);
@@ -223,6 +226,10 @@ namespace Assignment_2
             // Add all researcher positions 
             BasicResearcher = FetchFullResearcherPositions(BasicResearcher);
 
+            // Add publications
+            BasicResearcher.Publications = FetchBasicPublicationDetails(BasicResearcher);
+
+            // Return the now fully made researcher
             return BasicResearcher;
         }
 
@@ -294,7 +301,7 @@ namespace Assignment_2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?ID", conn);
+                MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=" + ID, conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -321,16 +328,20 @@ namespace Assignment_2
             // Fetch basic Publication details
             try
             {
-                conn = GetConnection();
                 rdr = null;
                 conn.Open();
+
+                if(DOIList.Count == 0)
+                {
+                    Console.WriteLine("\t\tDOI list is empty");
+                }
 
                 while (DOIList.Count != 0)
                 {
                     // Get next DOI
                     cDOI = DOIList[0];
 
-                    MySqlCommand cmd = new MySqlCommand("select title, year from publication where doi=?cDOI", conn);
+                    MySqlCommand cmd = new MySqlCommand("select title, year from publication where doi='" + cDOI + "'", conn);
                     rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
@@ -346,11 +357,14 @@ namespace Assignment_2
                     }
 
                     DOIList.RemoveAt(0);
+
+                    rdr.Close();
                 }
             }
             catch (MySqlException e)
             {
                 ReportError("loading basic publications", e);
+                Console.WriteLine("\t\t\tSOMETHING WENT WRONG: " + e.Message);
             }
             finally
             {
@@ -379,7 +393,7 @@ namespace Assignment_2
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from publication where doi=?DOI", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from publication where doi='" + DOI + "'", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -394,6 +408,7 @@ namespace Assignment_2
             catch (MySqlException e)
             {
                 ReportError("updating publication", e);
+                Console.WriteLine("Error updating publication: " + e.Message);
             }
             finally
             {
