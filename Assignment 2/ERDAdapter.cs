@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows; //for generating a MessageBox upon encountering an error
+
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
@@ -121,6 +122,9 @@ namespace Assignment_2
             // Add publications
             FullResearcher.Publications = FetchBasicPublicationDetails(FullResearcher);
 
+            // Add supervisions
+            FullResearcher.StudentsSupervised = FetchSupervisions(FullResearcher.ID);
+
             return FullResearcher;
         }
 
@@ -228,8 +232,51 @@ namespace Assignment_2
             // Add publications
             BasicResearcher.Publications = FetchBasicPublicationDetails(BasicResearcher);
 
+            // Add supervisions
+            BasicResearcher.StudentsSupervised = FetchSupervisions(BasicResearcher.ID);
+
             // Return the now fully made researcher
             return BasicResearcher;
+        }
+
+        // Returns a list of student names that a staff supervises
+        public static List<String> FetchSupervisions(int StaffID)
+        {
+            // List of student names
+            List<String> StudentsSupervised = new List<String>();
+
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select given_name, family_name from researcher where supervisor_id=" + StaffID, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    StudentsSupervised.Add( rdr.GetString(0) + " " + rdr.GetString(1) );
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("loading supervisions", e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return StudentsSupervised;
         }
 
 
