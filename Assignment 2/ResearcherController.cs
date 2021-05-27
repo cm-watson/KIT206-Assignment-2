@@ -1,13 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Assignment_2
 {
 
     public class ResearcherController
     {
+        private List<Researcher> MasterResearchers = LoadResearchers();
+        //private ObservableCollection<Researcher> ViewableResearchers = MasterResearchers;
+
         // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
+        public List<Researcher> LoadResearchers()
+        {
+            return ERDAdapter.FetchBasicResearcherDetails();
+        }
 
         // Complete the details of a Researcher
         public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
