@@ -53,6 +53,9 @@ namespace Assignment_2
 
         // A list of the Researcher's Positions
         public List<Position> Positions { get; set; }
+        
+        // A list of supervised students names 
+        public List<String> StudentsSupervised { get; set; }
 
 
         // Researcher Constructor
