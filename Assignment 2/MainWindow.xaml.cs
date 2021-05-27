@@ -39,5 +39,39 @@ namespace Assignment_2
         {
 
         }
+
+        /*
+         * Assumption: A selectedResearcher variable is present, initiated/initalized and
+         * stores a bool(?) value defining what type of Researcher is selected (staff or
+         * student).
+         * 
+         * if (selectedResearcher == staff)
+         * {
+         *      display following labels, i.e. set to non-collapsed
+         *      
+         *      Name
+         *      Title
+         *      School/Unit
+         *      Campus
+         *      Email
+         *      Photo
+         *      Current Job Title
+         *      Commenced w/ Institution
+         *      Commenced current position
+         *      Tenure
+         *      Publications
+         *      3-year Average
+         *      Performance
+         *      Supervisions
+         * } else {
+         *      set 3-year, Performance, Supervisions to collapsed
+         *      
+         *      display following labels, i.e. set to non-collapsed
+         *      
+         *      Degree
+         *      Supervisor
+         * }
+         */
+        
     }
 }
