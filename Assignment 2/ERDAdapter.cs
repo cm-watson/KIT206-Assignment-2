@@ -438,7 +438,6 @@ namespace Assignment_2
 
                 for (int j = 0; j < P.Count; j++)
                 {
-                    Console.WriteLine(P[j].Year + " == " + (From + i));
                     if (P[j].Year == (From + i))
                     {
                         PCount[i]++;
