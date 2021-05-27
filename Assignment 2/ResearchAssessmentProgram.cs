@@ -8,11 +8,9 @@ namespace Assignment_2
 {
     public class ResearchAssessmentProgram
     {
+
         static void Main(string[] args)
         {
-            MainWindow MainWindow = new MainWindow();
-
-
             //    /* TEST OBJECTS */
 
             //    // CONTROLLERS
