@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows; //for generating a MessageBox upon encountering an error
-
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
