@@ -32,6 +32,11 @@ namespace Assignment_2
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MessageBox.Show("You have selected " + e.AddedItems[0]);
+        }
+
+        private void ResearcherListView_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
     }

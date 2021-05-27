@@ -14,7 +14,7 @@
             
             <Label x:Name="label1" Content="Show:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label2" Content="ResearcherListView" HorizontalAlignment="Left" Margin="223,386,0,0" VerticalAlignment="Top"/>
-            <local:ResearcherListView HorizontalAlignment="Left" Height="100" Margin="123,166,0,0" VerticalAlignment="Top" Width="100"/>
+            <local:ResearcherListView HorizontalAlignment="Left" Height="100" Margin="316,182,0,0" VerticalAlignment="Top" Width="100" Loaded="ResearcherListView_Loaded"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="720" Margin="426,0,0,0" VerticalAlignment="Top" Width="426">
             <Label x:Name="label3" Content="ResearcherDetailView&#xD;&#xA;(including PublicationsListView)" HorizontalAlignment="Left" Margin="212,252,0,0" VerticalAlignment="Top"/>

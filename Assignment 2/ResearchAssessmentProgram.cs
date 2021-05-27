@@ -13,142 +13,143 @@ namespace Assignment_2
             MainWindow MainWindow = new MainWindow();
 
 
-            /* TEST OBJECTS */
+            //    /* TEST OBJECTS */
 
-            // CONTROLLERS
-            ResearcherController TestResearcherController = new ResearcherController();
-            PublicationController TestPublicationController = new PublicationController();
+            //    // CONTROLLERS
+            //    ResearcherController TestResearcherController = new ResearcherController();
+            //    PublicationController TestPublicationController = new PublicationController();
 
-            // RESEARCHERS
-            List<Researcher> TestBasicResearchers = new List<Researcher>();
-            List<Researcher> TestDetailsResearchers = new List<Researcher>();
+            //    // RESEARCHERS
+            //    List<Researcher> TestBasicResearchers = new List<Researcher>();
+            //    List<Researcher> TestDetailsResearchers = new List<Researcher>();
 
-            // POSITIONS
-            List<Position> TestPositions = new List<Position>();
+            //    // POSITIONS
+            //    List<Position> TestPositions = new List<Position>();
 
-            // PUBLICATIONS
-            List<Publication> TestPublications = new List<Publication>();
+            //    // PUBLICATIONS
+            //    List<Publication> TestPublications = new List<Publication>();
 
-            // STAFF
-            List<Researcher> TestStaff = new List<Researcher>();
-            
-            // STUDENTS
-            List<Researcher> TestStudents = new List<Researcher>();
+            //    // STAFF
+            //    List<Researcher> TestStaff = new List<Researcher>();
+
+            //    // STUDENTS
+            //    List<Researcher> TestStudents = new List<Researcher>();
 
 
-            /* Testing methods */
+            //    /* Testing methods */
 
-            // RESEARCHER CONTROLLER
+            //    // RESEARCHER CONTROLLER
 
-            TestBasicResearchers = TestResearcherController.LoadResearchers;
-            foreach ( Researcher R in TestBasicResearchers )
-            {
-                //PrintBasicResearcher( R );
-            }
+            //    TestBasicResearchers = TestResearcherController.LoadResearchers;
+            //    foreach ( Researcher R in TestBasicResearchers )
+            //    {
+            //        //PrintBasicResearcher( R );
+            //    }
 
-            TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[0] ) );
-            TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[ TestBasicResearchers.Count - 1 ] ) );
-            foreach ( Researcher R in TestDetailsResearchers )
-            {
-                //PrintDetailsResearcher( R );
-            }
+            //    TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[0] ) );
+            //    TestDetailsResearchers.Add( TestResearcherController.LoadResearcherDetails( TestBasicResearchers[ TestBasicResearchers.Count - 1 ] ) );
+            //    foreach ( Researcher R in TestDetailsResearchers )
+            //    {
+            //        //PrintDetailsResearcher( R );
+            //    }
 
-            List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestBasicResearchers, EmploymentLevel.B );
-            foreach ( Researcher R in FilteredByLevel )
-            {
-                //PrintBasicResearcher( R );
-            }
+            //    List<Researcher> FilteredByLevel = TestResearcherController.FilterByLevel( TestBasicResearchers, EmploymentLevel.B );
+            //    foreach ( Researcher R in FilteredByLevel )
+            //    {
+            //        //PrintBasicResearcher( R );
+            //    }
 
-            List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "an" );
-            foreach ( Researcher R in FilteredByName )
-            {
-                //PrintBasicResearcher( R );
-            }
+            //    List<Researcher> FilteredByName = TestResearcherController.FilterByName( TestBasicResearchers, "an" );
+            //    foreach ( Researcher R in FilteredByName )
+            //    {
+            //        //PrintBasicResearcher( R );
+            //    }
 
-            // PUBLICATION CONTROLLER
+            //    // PUBLICATION CONTROLLER
 
-            List<Publication> TestLoadPublications = TestPublicationController.LoadBasicPublicationsFor( TestBasicResearchers[0] );
-            foreach ( Publication P in TestLoadPublications )
-            {
-                //System.Diagnostics.Debug.WriteLine( P.Title );
-            }
+            //    List<Publication> TestLoadPublications = TestPublicationController.LoadBasicPublicationsFor( TestBasicResearchers[0] );
+            //    foreach ( Publication P in TestLoadPublications )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( P.Title );
+            //    }
 
-            List<Publication> TestLoadCompletePublications = new List<Publication>();
-            foreach ( Publication P in TestLoadPublications )
-            {
-                TestLoadCompletePublications.Add( TestPublicationController.LoadCompletePublicationDetails( P ) );
-            }
+            //    List<Publication> TestLoadCompletePublications = new List<Publication>();
+            //    foreach ( Publication P in TestLoadPublications )
+            //    {
+            //        TestLoadCompletePublications.Add( TestPublicationController.LoadCompletePublicationDetails( P ) );
+            //    }
 
-            foreach ( Publication P in TestLoadCompletePublications )
-            {
-                //System.Diagnostics.Debug.WriteLine( P.DOI + ", " + P.Title + ", " + P.Authors + ", " + P.Year + ", " + P.Cite + ", " + P.DateAvailable );
-            }
+            //    foreach ( Publication P in TestLoadCompletePublications )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( P.DOI + ", " + P.Title + ", " + P.Authors + ", " + P.Year + ", " + P.Cite + ", " + P.DateAvailable );
+            //    }
 
-            // POSITION
+            //    // POSITION
 
-            foreach ( Researcher R in TestBasicResearchers )
-            {
-                TestPositions.Add( R.Positions[0] );
-            }
+            //    foreach ( Researcher R in TestBasicResearchers )
+            //    {
+            //        TestPositions.Add( R.Positions[0] );
+            //    }
 
-            foreach ( Position P in TestPositions )
-            {
-                //System.Diagnostics.Debug.WriteLine( "Level: " + P.GetLevel() + ", Title: " + P.GetJobTitle(P.Level) );
-            }  
-            
+            //    foreach ( Position P in TestPositions )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( "Level: " + P.GetLevel() + ", Title: " + P.GetJobTitle(P.Level) );
+            //    }  
 
-            // PUBLICATION
 
-            foreach ( Publication P in TestLoadPublications )
-            {
-                //System.Diagnostics.Debug.WriteLine( Publication.DateAvailable + ", " + Publication.Age() );
-            }
+            //    // PUBLICATION
 
-            // RESEARCHER
+            //    foreach ( Publication P in TestLoadPublications )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( Publication.DateAvailable + ", " + Publication.Age() );
+            //    }
 
-            foreach ( Researcher R in TestBasicResearchers )
-            {
-                //System.Diagnostics.Debug.WriteLine( R.GetCurrentJob().Level );
-                //System.Diagnostics.Debug.WriteLine( R.CurrentJobTitle );
-                //System.Diagnostics.Debug.WriteLine( R.CurrentJobStart );
-                //System.Diagnostics.Debug.WriteLine( R.EarliestStart );
-                //System.Diagnostics.Debug.WriteLine( R.Tenure() );
-                //System.Diagnostics.Debug.WriteLine( R.PublicationsCount() );
-            }
+            //    // RESEARCHER
 
-            // STAFF
+            //    foreach ( Researcher R in TestBasicResearchers )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( R.GetCurrentJob().Level );
+            //        //System.Diagnostics.Debug.WriteLine( R.CurrentJobTitle );
+            //        //System.Diagnostics.Debug.WriteLine( R.CurrentJobStart );
+            //        //System.Diagnostics.Debug.WriteLine( R.EarliestStart );
+            //        //System.Diagnostics.Debug.WriteLine( R.Tenure() );
+            //        //System.Diagnostics.Debug.WriteLine( R.PublicationsCount() );
+            //    }
 
-            foreach ( Researcher R in TestBasicResearchers )
-            {
-                if( R.CurrentType == Type.Staff )
-                {
-                    TestStaff.Add( R );
-                }
+            //    // STAFF
 
-            }
+            //    foreach ( Researcher R in TestBasicResearchers )
+            //    {
+            //        if( R.CurrentType == Type.Staff )
+            //        {
+            //            TestStaff.Add( R );
+            //        }
 
-            foreach ( Researcher R in TestStaff )
-            {
-                //System.Diagnostics.Debug.WriteLine( R.ThreeYearAverage( R.Publications ) );
-            }
+            //    }
 
-            foreach ( Researcher R in TestStaff )
-            {
-                //System.Diagnostics.Debug.WriteLine( R.Performance( R.Publications ) );
-            }
+            //    foreach ( Researcher R in TestStaff )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( R.ThreeYearAverage( R.Publications ) );
+            //    }
 
-        }  
-        
-        public static void PrintBasicResearcher(Researcher R)
-        {
-            System.Diagnostics.Debug.WriteLine( R.FamilyName + ", " + R.GivenName + " (" + R.Title + ")" );
-        }
+            //    foreach ( Researcher R in TestStaff )
+            //    {
+            //        //System.Diagnostics.Debug.WriteLine( R.Performance( R.Publications ) );
+            //    }
 
-        public static void PrintDetailsResearcher(Researcher R)
-        {
-            System.Diagnostics.Debug.WriteLine( R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
-            + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
-            + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel() );
+            //}  
+
+            //public static void PrintBasicResearcher(Researcher R)
+            //{
+            //    System.Diagnostics.Debug.WriteLine( R.FamilyName + ", " + R.GivenName + " (" + R.Title + ")" );
+            //}
+
+            //public static void PrintDetailsResearcher(Researcher R)
+            //{
+            //    System.Diagnostics.Debug.WriteLine( R.ID + " " + R.CurrentType + " " + R.GivenName + " " + R.FamilyName
+            //    + " " + R.Title + ", Unit:" + R.Unit + ", Campus: " + R.CurrentCampus + ", Email: " + R.Email
+            //    + ", Photo: " + R.Photo + ", Degree: " + R.Degree + ", SupervisorID: " + R.SupervisorID + ", Level: " + R.Positions[0].GetLevel() );
+            //}
         }
     }
 }
