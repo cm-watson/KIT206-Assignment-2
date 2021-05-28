@@ -7,7 +7,11 @@ namespace Assignment_2
 
     public class ResearcherController
     {
-        private List<Researcher> MasterResearchers = LoadResearchers;
+        public ResearcherController()
+        {
+           private List<Researcher> MasterResearchers = LoadResearchers; 
+        }
+
         //private ObservableCollection<Researcher> ViewableResearchers = MasterResearchers;
 
         // Return a list of Researchers with basic details
@@ -63,7 +67,6 @@ namespace Assignment_2
             return FilteredList;
 
         }
-
+        
     }
-
 }
