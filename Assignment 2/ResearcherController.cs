@@ -7,22 +7,25 @@ namespace Assignment_2
 
     public class ResearcherController
     {
-        // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers;
+        // The main list of all Researchers
         private List<Researcher> MasterResearchers;
+        // The list of Researchers shown in the UI
+        private ObservableCollection<Researcher> ViewableResearchers;
 
+        // ResearcherController constructor
         public ResearcherController()
         {
-            LoadResearchers = ERDAdapter.FetchBasicResearcherDetails();
+            // Fill List with Researchers
             MasterResearchers = LoadResearchers;
+            // Fill ObservableCollection with Researchers in MasterResearchers
+            ViewableResearchers = MakeObservable( MasterResearchers );
         }
-           
-    //private ObservableCollection<Researcher> ViewableResearchers = MasterResearchers;
 
+        // Return a list of Researchers with basic details
+        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
-
-    // Complete the details of a Researcher
-    public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
+        // Complete the details of a Researcher
+        public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
@@ -71,5 +74,20 @@ namespace Assignment_2
             return FilteredList;
 
         }
+    
+        // Convert the parsed List<Researcher> into an ObservableCollection<Researcher> 
+        public ObservableCollection<Researcher> MakeObservable( List<Researcher> Researchers)
+        {
+            ObservableCollection<Researcher> ShownResearchers = new ObservableCollection<Researcher>();
+            for ( int i = 0; i < Researchers.Count; i++ )
+            {
+                // Add each Researcher in Researchers to ShownResearchers
+                ShownResearchers.Add( Researchers[i] );
+            }
+            return ShownResearchers;
+        }
+    
+        // Return the ViewableResearchers ObservableCollection
+        public ObservableCollection<Researcher> GetList => ViewableResearchers;
     }
 }

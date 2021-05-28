@@ -6,79 +6,79 @@
         xmlns:local="clr-namespace:Assignment_2"
         mc:Ignorable="d"
         Title="MainWindow" Height="525" Width="700">
-    
-    <Grid>
-        
-        <Grid Height="484" VerticalAlignment="Bottom">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            
-            <!-- Column 0 -->
-            <StackPanel x:Name="LeftStackPanel">
 
-                <Label Grid.Column="0" Content="Filter by name:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.942,-0.977"/>
-                <TextBox Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Show:" HorizontalAlignment="Left" Margin="10,00,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="120">
-                    <ComboBoxItem>All Researchers</ComboBoxItem>
-                    <ComboBoxItem>Students Only</ComboBoxItem>
-                    <ComboBoxItem>A</ComboBoxItem>
-                    <ComboBoxItem>B</ComboBoxItem>
-                    <ComboBoxItem>C</ComboBoxItem>
-                    <ComboBoxItem>D</ComboBoxItem>
-                    <ComboBoxItem>E</ComboBoxItem>
-                </ComboBox>
-                <ListBox Grid.Column="0" Margin="5,5,5,0" Height="380"/>
+	<Grid>
 
-            </StackPanel>
+		<Grid Height="484" VerticalAlignment="Bottom">
 
-            <!-- Column 1 -->
-            <StackPanel Grid.Column="1" x:Name="MiddleStackPanel">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" />
+				<ColumnDefinition Width="2*" />
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
 
-                <Label Content="Name:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Title:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Unit:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Campus:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Email" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Current job:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Commenced with institution:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Commenced current position" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Previous positions:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <ListBox Grid.Column="1" Margin="5,0,5,225" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+			<!-- Column 0 -->
+			<StackPanel x:Name="LeftStackPanel">
 
-            </StackPanel>
+				<Label Grid.Column="0" Content="Filter by name:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.942,-0.977"/>
+				<TextBox Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+				<Label Content="Show:" HorizontalAlignment="Left" Margin="10,00,0,0" VerticalAlignment="Top"/>
+				<ComboBox HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="120">
+					<ComboBoxItem>All Researchers</ComboBoxItem>
+					<ComboBoxItem>Students Only</ComboBoxItem>
+					<ComboBoxItem>A</ComboBoxItem>
+					<ComboBoxItem>B</ComboBoxItem>
+					<ComboBoxItem>C</ComboBoxItem>
+					<ComboBoxItem>D</ComboBoxItem>
+					<ComboBoxItem>E</ComboBoxItem>
+				</ComboBox>
+				<ListBox Grid.Column="0" Margin="5,5,5,0" Height="380"/>
 
-            <Label Content="Tenure:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top"/>
-            <Label Content="Publications:" Grid.Column="1" HorizontalAlignment="Left" Margin="120,268,0,0" VerticalAlignment="Top"/>
-            <Button Content="Cumulative Count" Grid.Column="1" HorizontalAlignment="Left" Margin="215,273,0,0" VerticalAlignment="Top"/>
-            <Label Content="3-year average:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top"/>
-            <Label Content="Performance:" Grid.Column="1" HorizontalAlignment="Left" Margin="135,293,0,0" VerticalAlignment="Top"/>
-            <Label Content="Supervisions:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top"/>
-            <Button Content="Show Names" Grid.Column="1" HorizontalAlignment="Left" Margin="120,323,0,0" VerticalAlignment="Top"/>
-            <Label Content="Degree:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"/>
-            <Label Content="Supervisor:" Grid.Column="1" HorizontalAlignment="Left" Margin="120,343,0,0" VerticalAlignment="Top"/>
-            <ListBox Grid.Column="1" Margin="5,370,5,5" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+			</StackPanel>
 
-            <!-- Column 2-->
-            <StackPanel Grid.Column="2" x:Name="RightStackPanel">
-                
-                <Label Content="DOI:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Title:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Authors:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Publication year:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Type:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Cite as:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Availability year:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Age: " Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+			<!-- Column 1 -->
+			<StackPanel Grid.Column="1" x:Name="MiddleStackPanel">
 
-            </StackPanel>
-            
-        </Grid>
-        
-    </Grid>
-    
+				<Label Content="Name:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Title:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Unit:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Campus:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Email" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Current job:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Commenced with institution:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Commenced current position" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Previous positions:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<ListBox Grid.Column="1" Margin="5,0,5,225" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+
+			</StackPanel>
+
+			<Label Content="Tenure:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top"/>
+			<Label Content="Publications:" Grid.Column="1" HorizontalAlignment="Left" Margin="120,268,0,0" VerticalAlignment="Top"/>
+			<Button Content="Cumulative Count" Grid.Column="1" HorizontalAlignment="Left" Margin="215,273,0,0" VerticalAlignment="Top"/>
+			<Label Content="3-year average:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top"/>
+			<Label Content="Performance:" Grid.Column="1" HorizontalAlignment="Left" Margin="135,293,0,0" VerticalAlignment="Top"/>
+			<Label Content="Supervisions:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top"/>
+			<Button Content="Show Names" Grid.Column="1" HorizontalAlignment="Left" Margin="120,323,0,0" VerticalAlignment="Top"/>
+			<Label Content="Degree:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"/>
+			<Label Content="Supervisor:" Grid.Column="1" HorizontalAlignment="Left" Margin="120,343,0,0" VerticalAlignment="Top"/>
+			<ListBox Grid.Column="1" Margin="5,370,5,5" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+
+			<!-- Column 2-->
+			<StackPanel Grid.Column="2" x:Name="RightStackPanel">
+
+				<Label Content="DOI:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Title:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Authors:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Publication year:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Type:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Cite as:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Availability year:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+				<Label Content="Age: " Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+
+			</StackPanel>
+
+		</Grid>
+
+	</Grid>
+
 </Window>
