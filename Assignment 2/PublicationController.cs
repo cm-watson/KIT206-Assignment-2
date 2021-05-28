@@ -15,7 +15,7 @@ namespace Assignment_2
         public PublicationController()
         {
             // Fill List with Publications
-            MasterPublications = LoadBasicPublicationsFor();
+            MasterPublications = LoadBasicPublicationsFor( new Researcher(0, Type.Staff, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null) );
             // Fill ObservableCollection with Publications in MasterPublications
             ViewablePublications = MakeObservable( MasterPublications );
         }
