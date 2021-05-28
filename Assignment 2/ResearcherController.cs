@@ -7,18 +7,22 @@ namespace Assignment_2
 
     public class ResearcherController
     {
+        // Return a list of Researchers with basic details
+        public List<Researcher> LoadResearchers;
+        private List<Researcher> MasterResearchers;
+
         public ResearcherController()
         {
-           private List<Researcher> MasterResearchers = LoadResearchers; 
+            LoadResearchers = ERDAdapter.FetchBasicResearcherDetails();
+            MasterResearchers = LoadResearchers;
         }
+           
+    //private ObservableCollection<Researcher> ViewableResearchers = MasterResearchers;
 
-        //private ObservableCollection<Researcher> ViewableResearchers = MasterResearchers;
 
-        // Return a list of Researchers with basic details
-        public List<Researcher> LoadResearchers => ERDAdapter.FetchBasicResearcherDetails();
 
-        // Complete the details of a Researcher
-        public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
+    // Complete the details of a Researcher
+    public Researcher LoadResearcherDetails(Researcher Researcher) => ERDAdapter.CompleteResearcherDetails(Researcher);
 
         // Filter the Researchers by EmploymentLevel
         public List<Researcher> FilterByLevel(List<Researcher> Researchers, EmploymentLevel Level)
@@ -34,7 +38,7 @@ namespace Assignment_2
                 {
                     //... then add them to the FilteredList
                     FilteredList.Add(Researchers[i]);
-                } 
+                }
             }
 
             // Return the FilteredList of Researchers (by level)
@@ -49,16 +53,16 @@ namespace Assignment_2
             List<Researcher> FilteredList = new List<Researcher>();
 
             // Remove all Researchers that don't have the correct Name
-            for (int i = 0; i < Researchers.Count; i++ )
+            for (int i = 0; i < Researchers.Count; i++)
             {
                 string FirstName = Researchers[i].GivenName;
                 string LastName = Researchers[i].FamilyName;
 
                 // If the Researcher doesn't have the correct Name...
-                if( FirstName.IndexOf( Name ) >= 0 || LastName.IndexOf( Name ) >= 0 )
+                if (FirstName.IndexOf(Name) >= 0 || LastName.IndexOf(Name) >= 0)
                 {
                     //... then remove them from the FilteredList
-                    FilteredList.Add( Researchers[i] );
+                    FilteredList.Add(Researchers[i]);
                 }
 
             }
@@ -67,6 +71,5 @@ namespace Assignment_2
             return FilteredList;
 
         }
-        
     }
 }
