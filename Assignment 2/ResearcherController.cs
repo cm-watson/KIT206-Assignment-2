@@ -74,6 +74,30 @@ namespace Assignment_2
             return FilteredList;
 
         }
+        
+        // Returns the number of publications from a researcher that were published per year
+        // between the 'from' and 'to' years (inclusive)
+        // Has O(n^2). Future revisions can make it O(n) with PCount[-1*(From-Year)]
+        public int[] GetPublicationCounts(int From, int To, Researcher R)
+        {
+            int[] PCount = new int[(To - From) + 1]; // int array with length equal to number of years (inclusive)
+            List<Publication> P = R.Publications; // List of all publications by researcher
+
+            for (int i = 0; i < PCount.Length; i++)
+            {
+                PCount[i] = 0;  // Set default value
+
+                for (int j = 0; j < P.Count; j++)
+                {
+                    if (P[j].Year == (From + i))
+                    {
+                        PCount[i]++;
+                    }
+                }
+            }
+
+            return PCount;
+        }
     
         // Convert the parsed List<Researcher> into an ObservableCollection<Researcher> 
         public ObservableCollection<Researcher> MakeObservable( List<Researcher> Researchers)
