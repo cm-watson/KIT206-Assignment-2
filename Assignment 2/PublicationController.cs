@@ -6,6 +6,7 @@ namespace Assignment_2
 {
 	public class PublicationController
 	{
+
         // The main list of all Publications
         private List<Publication> MasterPublications;
         // The list of Researchers shown in the UI
@@ -18,6 +19,12 @@ namespace Assignment_2
             MasterPublications = LoadBasicPublicationsFor( new Researcher(0, Type.Staff, "", "", "", "", Campus.Hobart, "", "", "", 0, null, null) );
             // Fill ObservableCollection with Publications in MasterPublications
             ViewablePublications = MakeObservable( MasterPublications );
+        }
+
+        // Sets the MasterPublications as LoadBasicPublicationsFor
+        public void SetPublications(Researcher Researcher)
+        {
+            MasterPublications = LoadBasicPublicationsFor( Researcher );
         }
 
         // Return a list of Publications (with basic details) that the Researcher has published
